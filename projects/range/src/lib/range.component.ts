@@ -32,23 +32,23 @@ import { Subject } from 'rxjs';
                (click)="onClick()"
                (input)="onChange(input.value)">
 
-        <div class="flex text-center text-sm">
+        <div class="flex justify-between">
 
-            <div [ngClass]="minClasses" class="">
+            <div *ngIf="minLabel || showMinMax" class="" [ngClass]="minClasses">
 
-                {{ min }}
+                {{ minLabel || min }}
 
             </div>
 
-            <div [ngClass]="textClasses" class="flex-1">
+            <div [ngClass]="textClasses" class="" style="border: 1px solid red">
 
                 {{ text }}
 
             </div>
 
-            <div [ngClass]="maxClasses" class="">
+            <div *ngIf="maxLabel || showMinMax" class="=" [ngClass]="maxClasses">
 
-                {{ max }}
+                {{ maxLabel || max }}
 
             </div>
 
@@ -65,8 +65,10 @@ export class RangeComponent implements OnInit {
     @Input() labelClasses: string;
     @Input() inputClasses: string;
     @Input() minClasses: string;
+    @Input() minLabel: string;
     @Input() textClasses: string;
     @Input() maxClasses: string;
+    @Input() maxLabel: string;
     @Input() value$: Subject<number>;
     @Input() control: FormControl;
 
@@ -79,7 +81,7 @@ export class RangeComponent implements OnInit {
     public ngOnInit() {
 
         this.changeDetectorRef.detectChanges();
-        
+
         if (this.control) {
 
             this.value = this.control.value;
