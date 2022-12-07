@@ -40,7 +40,7 @@ import { Subject } from 'rxjs';
 
             </div>
 
-            <div [ngClass]="textClasses" class="" style="border: 1px solid red">
+            <div [ngClass]="textClasses" class="" style="flex: 1">
 
                 {{ text }}
 
