@@ -28,7 +28,6 @@ import { Subject } from 'rxjs';
                [min]="min"
                [max]="max"
                [step]="step"
-
                (click)="onClick()"
                (input)="onChange(input.value)">
 

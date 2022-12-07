@@ -18,6 +18,9 @@
     "importHelpers": true,
       "strictNullChecks": false,
       "paths": {
+        "accordion": [
+          "dist/accordion"
+        ],
       "range": [
         "dist/range"
       ]
