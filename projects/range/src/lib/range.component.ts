@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -57,22 +57,23 @@ import { Subject } from 'rxjs';
 })
 export class RangeComponent implements OnInit {
 
-    @Input() text: string;
-    @Input() min: number;
-    @Input() max: number;
-    @Input() step: number;
-    @Input() showMinMax: boolean;
-    @Input() labelClasses: string;
-    @Input() inputClasses: string;
-    @Input() minClasses: string;
-    @Input() minLabel: string;
-    @Input() textClasses: string;
-    @Input() maxClasses: string;
-    @Input() maxLabel: string;
-    @Input() value$: Subject<number>;
-    @Input() control: FormControl;
-
+    @Input() public text: string;
+    @Input() public min: number;
+    @Input() public max: number;
+    @Input() public step: number;
+    @Input() public showMinMax: boolean;
+    @Input() public labelClasses: string;
+    @Input() public inputClasses: string;
+    @Input() public minClasses: string;
+    @Input() public minLabel: string;
+    @Input() public textClasses: string;
+    @Input() public maxClasses: string;
+    @Input() public maxLabel: string;
+    @Input() public value$: Subject<number>;
+    @Input() public control: FormControl;
     @Input() public value: number;
+
+    @Output() valueChange: EventEmitter<number> = new EventEmitter();
 
     public constructor(private readonly changeDetectorRef: ChangeDetectorRef) {
 
@@ -109,6 +110,8 @@ export class RangeComponent implements OnInit {
             this.control.setValue(this.value);
 
         }
+
+        this.valueChange.emit(this.value);
 
     }
 
