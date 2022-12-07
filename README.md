@@ -1,27 +1,42 @@
-# App
+# Angular component library using Tailwindcss
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+Opinionated and customizable components for angular using tailwindcss.
 
-## Development server
+> All components are standalone components and do not require
+> importing via mododules.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Components
 
-## Code scaffolding
+| Syntax          | Description                      |
+|-----------------|----------------------------------|
+| @ngtw/accordion | Collapsible accordion component. |
+| @ngtw/range     | Range input slider.              |
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+Install the range component:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install @ngtw/range
+```
 
-## Running unit tests
+Add the range component to your template:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
 
-## Running end-to-end tests
+<ngtw-range labelClasses="text-green-500 bg-gray-800 p-1 px-6 rounded"
+            inputClasses="h-2 accent-indigo-900 appearance-none bg-gray-800"
+            textClasses="text-gray-600"
+            [minLabel]="the mininmum!"
+            minClasses="font-bold text-gray-400"
+            [maxLabel]="the maximum!"
+            maxClasses="font-bold text-fuchsia-500"
+            [value]="50"
+            [min]="1"
+            [max]="100"
+            (valueChange)="update(i, $event)"></ngtw-range>
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Example implementation:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![img.png](img.png)
