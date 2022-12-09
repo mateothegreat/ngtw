@@ -1,26 +1,40 @@
-<div class="m-10 border w-96 p-10">
+<div class="mt-10 bg-gray-300 py-10">
+    <div class="pb-20">
+        <h1 class="text-center text-2xl md:text-4xl 2xl:text-5xl text-gray-500">
+            <span class="font-bold">Loved By Industy</span>
+            <span class="italic">Leaders</span>
+        </h1>
+    </div>
 
+    <ngtw-testimonials-horizontal [blocks]="testimonials"></ngtw-testimonials-horizontal>
+</div>
+
+<div class="m-10 border p-10" style="width: 500px; height: 700px">
+    <div class="text-xl font-medium mb-10">Accordion Component</div>
+
+    <ngtw-helper></ngtw-helper>
+</div>
+
+<div class="m-10 border w-96 p-10">
     <div class="text-xl font-medium mb-10">Range Slider Component</div>
 
-    <ngtw-range text="asdf asdf asdf"
-                labelClasses="text-blue-900 bg-gray-300"
-                inputClasses="h-2 border-2 accent-green-900 bg-blue-500 border-gray-400 appearance-none"
-                textClasses="text-gray-600"
-                minLabel="the min"
-                minClasses="font-bold text-gray-400"
-                maxLabel="the max 123"
-                maxClasses="font-bold text-red-600"
-                [value]="39"
-                [min]="1"
-                [max]="99"
-                [value$]="value$"></ngtw-range>
-
+    <ngtw-range
+        text="asdf asdf asdf"
+        labelClasses="text-blue-900 bg-gray-300"
+        inputClasses="h-2 border-2 accent-green-900 bg-blue-500 border-gray-400 appearance-none"
+        textClasses="text-gray-600"
+        minLabel="the min"
+        minClasses="font-bold text-gray-400"
+        maxLabel="the max 123"
+        maxClasses="font-bold text-red-600"
+        [value]="39"
+        [min]="1"
+        [max]="99"
+        [value$]="value$"></ngtw-range>
 </div>
 
 <div class="m-10 border p-10" style="width: 50%">
-
     <div class="text-xl font-medium mb-10">Accordion Component</div>
 
     <ngtw-accordion [tabs]="tabs"></ngtw-accordion>
-
 </div>
