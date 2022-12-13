@@ -24,6 +24,9 @@
             "accordion": [
                 "dist/accordion"
             ],
+            "datetime-picker": [
+              "dist/datetime-picker"
+            ],
             "drawer": [
               "dist/drawer"
             ],

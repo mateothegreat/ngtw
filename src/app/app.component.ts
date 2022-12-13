@@ -1,19 +1,26 @@
-import { AComponent } from './a/a.component';
-
-import { AccordionTab } from '../../projects/accordion/src/lib/accordion-tab';
-
 import { Component } from '@angular/core';
 
 import { Subject } from 'rxjs';
 
+import { AccordionTab } from '../../projects/accordion/src/lib/accordion-tab';
+import { DatetimePicker } from '../../projects/datetime-picker/src/lib/datetime-picker';
+import { DatetimePickerMode } from '../../projects/datetime-picker/src/lib/datetime-picker-mode';
+import { DatetimePickerTheme } from '../../projects/datetime-picker/src/lib/datetime-picker-theme';
+import { AComponent } from './a/a.component';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent {
     public value$: Subject<number> = new Subject();
 
+    public datetimePickerConfig: DatetimePicker = {
+        mode: DatetimePickerMode.WEEK,
+        theme: DatetimePickerTheme.DARK,
+        value: new Date()
+    };
     public testimonials = [
         {
             content: ' asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf '
@@ -73,7 +80,7 @@ export class AppComponent {
 
     public constructor() {
         this.value$.subscribe((value) => {
-            console.log(`new value: ${value}`);
+            console.log(`new value: ${ value }`);
         });
     }
 }

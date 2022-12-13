@@ -1,3 +1,4 @@
+import { DatetimePickerComponent } from '../../projects/datetime-picker/src/lib/datetime-picker.component';
 import { AComponent } from './a/a.component';
 
 import { AccordionComponent } from '../../projects/accordion/src/lib/accordion.component';
@@ -18,12 +19,15 @@ import SwiperCore, { Navigation, Pagination } from 'swiper';
 
 import { AppComponent } from './app.component';
 
-SwiperCore.use([Pagination, Navigation]);
+SwiperCore.use([ Pagination, Navigation ]);
 
 @NgModule({
-    declarations: [AppComponent, AComponent],
-    imports: [BrowserModule, AccordionComponent, HelperComponent, RangeComponent, SwiperModule, TestimonialsHorizontalComponent],
+    declarations: [ AppComponent, AComponent ],
+    imports: [ BrowserModule, AccordionComponent,
+        DatetimePickerComponent,
+        HelperComponent, RangeComponent, SwiperModule, TestimonialsHorizontalComponent ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [ AppComponent ]
 })
-export class AppModule {}
+export class AppModule {
+}
