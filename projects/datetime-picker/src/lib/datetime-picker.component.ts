@@ -9,7 +9,7 @@ import { DatetimePickerMode } from './datetime-picker-mode';
 
 @Component({
     standalone: true,
-    imports: [ CommonModule ],
+    imports: [CommonModule],
     selector: 'ngtw-datetime-picker',
     template: `
         <div class="flex h-96 border-2 border-gray-400 rounded-lg overflow-hidden" style="width: 900px">
@@ -115,7 +115,7 @@ export class DatetimePickerComponent implements OnInit {
             this.nav.push({
 
                 type: DatetimePickerMode.WEEK,
-                label: `Week ${ Number.parseInt(group) + 1 }`
+                label: `Week ${Number.parseInt(group) + 1}`
 
             });
 
@@ -136,7 +136,7 @@ export class DatetimePickerComponent implements OnInit {
 
         }
 
-        this.currentStart = groups[0];
+        // this.currentStart = groups[0];
 
     }
 

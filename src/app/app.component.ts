@@ -11,10 +11,12 @@ import { AComponent } from './a/a.component';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: [ './app.component.scss' ]
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
     public value$: Subject<number> = new Subject();
+
+    public isDrawerOpen = false;
 
     public datetimePickerConfig: DatetimePicker = {
         mode: DatetimePickerMode.WEEK,
@@ -80,7 +82,7 @@ export class AppComponent {
 
     public constructor() {
         this.value$.subscribe((value) => {
-            console.log(`new value: ${ value }`);
+            console.log(`new value: ${value}`);
         });
     }
 }
