@@ -1,0 +1,44 @@
+:host {
+    --drawer-width: 400px;
+}
+
+.drawer-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: var(--drawer-width);
+    height: 100vh;
+    background: #fff;
+    transition: all 300ms;
+    box-shadow: -3px 0px 6px 1px #00000026;
+    padding: 0px;
+    z-index: 99;
+    &.position-right {
+        right: calc(-1 * var(--drawer-width));
+        &.is-open {
+            right: 0;
+        }
+    }
+    &.position-left {
+        left: calc(-1 * var(--drawer-width));
+        &.is-open {
+            left: 0;
+        }
+    }
+}
+
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: #666161;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    filter: blur(15px);
+    opacity: 0.5;
+    display: none;
+}
+
+.drawer-hidden {
+    display: block;
+}

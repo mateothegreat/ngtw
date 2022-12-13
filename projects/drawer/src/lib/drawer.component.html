@@ -1,0 +1,13 @@
+<div class="drawer-container" [class.is-open]="isOpen" [class.position-right]="position === 'right'"
+    [class.position-left]="position === 'left'">
+    <div>
+        <button class="close" (click)="close()">X</button>
+    </div>
+    <div class="header">
+        <ng-content select="[header]"></ng-content>
+    </div>
+    <div class="body">
+        <ng-content select="[body]"></ng-content>
+    </div>
+</div>
+<div class="drawer-overlay" (click)="close()" [class.drawer-hidden]="isBlur && isOpen"></div>
