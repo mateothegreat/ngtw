@@ -24,6 +24,9 @@
             "accordion": [
                 "dist/accordion"
             ],
+            "drawer": [
+              "dist/drawer"
+            ],
             "dynamic-component-factory": [
                 "dist/dynamic-component-factory"
             ],
