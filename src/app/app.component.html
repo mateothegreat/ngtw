@@ -1,8 +1,26 @@
 <div class="m-10 border p-10" style="width: 500px;">
 
-    <div class="text-xl font-medium mb-10">Progress Bar Component</div>
+    <ngtw-dropdown label="Manage Camera"
+                   [show]="true"
+                   [items]="menu"></ngtw-dropdown>
 
-    <div class="examples">
+</div>
+
+<div class="m-10 border p-10" style="width: 500px;">
+
+    <app-library-header title="Divider Component" [icon]="icons.grid">
+
+        asdf asd f asdfad fsadf<br>
+        asdf asd f asdfad fsadf<br>
+        asdf asd f asdfad fsadf<br>
+
+    </app-library-header>
+
+    <div class="text-xl font-medium mb-10">Divider Component</div>
+
+    <app-terminal>npm install @ngtw/divider</app-terminal>
+
+    <div class="examples border-4 border-gray-300">
 
         <div class="rounded rounded-xl border border-fuchsia-600 border-4 h-28 text-fuchsia-500 text-sm justify-evenly flex border w-full items-center bg-white">
             <div class="">left side</div>

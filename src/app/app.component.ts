@@ -6,8 +6,11 @@ import { AccordionTab } from '../../projects/accordion/src/lib/accordion-tab';
 import { DatetimePicker } from '../../projects/datetime-picker/src/lib/datetime-picker';
 import { DatetimePickerMode } from '../../projects/datetime-picker/src/lib/datetime-picker-mode';
 import { DatetimePickerTheme } from '../../projects/datetime-picker/src/lib/datetime-picker-theme';
+import { DropdownGroup } from '../../projects/dropdown/src/lib/dropdown-group';
+import { DropdownItem } from '../../projects/dropdown/src/lib/dropdown-item';
 import { AComponent } from './a/a.component';
 import { CustomObject } from './custom-object';
+import { Icons } from './icons';
 
 @Component({
     selector: 'app-root',
@@ -15,13 +18,37 @@ import { CustomObject } from './custom-object';
     styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent {
+    public icons = Icons;
     public value$: Subject<number> = new Subject();
+
+    public menu: Array<DropdownGroup> = [
+        {
+            label: 'Group A',
+            items: [
+                {
+                    label: 'Item 1'
+                },
+                {
+                    label: 'Item 3 (disabled)',
+                    disabled: true
+                },
+                {
+                    label: 'Item 2 and on..',
+                    extra: [ 'text-red-500', 'font-bold' ],
+                    click: (item: DropdownItem) => {
+                        console.log(item);
+                    }
+                }
+            ]
+        }
+    ];
 
     public datetimePickerConfig: DatetimePicker<CustomObject> = {
         mode: DatetimePickerMode.WEEK,
         theme: DatetimePickerTheme.DARK,
         value: new Date()
     };
+
     public testimonials = [
         {
             content: ' asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf asdf asd fasd fasd fasdf '

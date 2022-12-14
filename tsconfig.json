@@ -33,6 +33,9 @@
             "drawer": [
               "dist/drawer"
             ],
+            "dropdown": [
+              "dist/dropdown"
+            ],
             "dynamic-component-factory": [
                 "dist/dynamic-component-factory"
             ],
