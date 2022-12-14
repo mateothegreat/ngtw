@@ -7,6 +7,7 @@ import { DatetimePicker } from '../../projects/datetime-picker/src/lib/datetime-
 import { DatetimePickerMode } from '../../projects/datetime-picker/src/lib/datetime-picker-mode';
 import { DatetimePickerTheme } from '../../projects/datetime-picker/src/lib/datetime-picker-theme';
 import { AComponent } from './a/a.component';
+import { CustomObject } from './custom-object';
 
 @Component({
     selector: 'app-root',
@@ -16,7 +17,7 @@ import { AComponent } from './a/a.component';
 export class AppComponent {
     public value$: Subject<number> = new Subject();
 
-    public datetimePickerConfig: DatetimePicker = {
+    public datetimePickerConfig: DatetimePicker<CustomObject> = {
         mode: DatetimePickerMode.WEEK,
         theme: DatetimePickerTheme.DARK,
         value: new Date()

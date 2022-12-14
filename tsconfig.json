@@ -27,6 +27,9 @@
             "datetime-picker": [
               "dist/datetime-picker"
             ],
+            "divider": [
+              "dist/divider"
+            ],
             "drawer": [
               "dist/drawer"
             ],
@@ -41,6 +44,9 @@
             ],
             "modal": [
                 "dist/modal"
+            ],
+            "progress-bar": [
+              "dist/progress-bar"
             ],
             "range": [
                 "dist/range"

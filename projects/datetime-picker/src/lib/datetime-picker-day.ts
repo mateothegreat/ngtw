@@ -1,10 +1,12 @@
-export class DatetimePickerDay {
+export class DatetimePickerDay<T> {
     public date: Date;
 
     public day?: number;
     public week?: number;
     public month?: number;
     public year?: number;
+
+    public data?: T;
 
     public constructor(date: Date) {
         this.date = date;
