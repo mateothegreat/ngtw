@@ -24,6 +24,9 @@
             "accordion": [
                 "dist/accordion"
             ],
+            "backdrop": [
+              "dist/backdrop"
+            ],
             "datetime-picker": [
               "dist/datetime-picker"
             ],

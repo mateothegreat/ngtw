@@ -10,7 +10,8 @@
         "start": "ng serve --port 4222",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
-        "release": "cd projects/range && npm version patch && cd ../../ && ng build range && cd dist/* && npm publish --access=public"
+        "release:range": "cd projects/range && npm version patch && cd ../../ && ng build range && cd dist/* && npm publish --access=public",
+        "release:dropdown": "cd projects/dropdown && npm version patch && cd ../../ && ng build range && cd dist/* && npm publish --access=public"
     },
     "private": true,
     "dependencies": {

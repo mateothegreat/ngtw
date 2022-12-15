@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 
 import { Component, Input, OnInit } from '@angular/core';
+import { BackdropService } from 'projects/backdrop/src/public-api';
+import { DropdownComponent } from 'projects/dropdown/src/public-api';
 import { DatetimeCalendarMonthComponent } from './caldendar/datetime-calendar-month.component';
 
 import { DatetimePicker } from './datetime-picker';
@@ -11,7 +13,12 @@ import { DatetimePickerMonth } from './datetime-picker-month';
 
 @Component({
     standalone: true,
-    imports: [ CommonModule, DatetimePickerComponent, DatetimeCalendarMonthComponent ],
+    imports: [
+        CommonModule,
+        DatetimePickerComponent,
+        DatetimeCalendarMonthComponent,
+        DropdownComponent
+    ],
     selector: 'ngtw-datetime-picker',
     template: `
         <div class="flex h-96 border-2 border-gray-200 rounded-lg overflow-hidden" style="width: 900px">
@@ -60,8 +67,11 @@ export class DatetimePickerComponent implements OnInit {
     public currentStart: DatetimePickerDay<any>;
     public currentEnd: DatetimePickerDay<any>;
 
-    public groupBy(days: Array<DatetimePickerDay<any>>, mode: DatetimePickerMode): { [key: number]: Array<DatetimePickerDay<any>> } {
+    public constructor(private readonly backdropService: BackdropService) {
+// backdropService.open();
+    }
 
+    public groupBy(days: Array<DatetimePickerDay<any>>, mode: DatetimePickerMode): { [key: number]: Array<DatetimePickerDay<any>> } {
         const groupBy = <T>(array: T[], predicate: (value: T, index: number, array: T[]) => string) =>
             array.reduce((acc, value, index, array) => {
                 (acc[predicate(value, index, array)] ||= []).push(value);

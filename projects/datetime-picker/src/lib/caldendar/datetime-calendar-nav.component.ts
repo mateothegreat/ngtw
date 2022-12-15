@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 
 import { Component, Input, OnInit } from '@angular/core';
+import { DropdownComponent, DropdownGroup } from 'projects/dropdown/src/public-api';
 
 import { DatetimePicker } from '../datetime-picker';
 import { DatetimePickerDay } from '../datetime-picker-day';
 
 @Component({
     standalone: true,
-    imports: [ CommonModule ],
+    imports: [ CommonModule, DropdownComponent],
     selector: 'ngtw-datetime-calendar-nav',
     template: `
         <div class="flex justify-evenly flex-1 h-12 items-center">
@@ -50,7 +51,7 @@ import { DatetimePickerDay } from '../datetime-picker-day';
 
                         <div class="">
 
-                            2022
+                            <ngtw-dropdown [label]="'asdf'"></ngtw-dropdown>
 
                         </div>
 
@@ -85,6 +86,7 @@ import { DatetimePickerDay } from '../datetime-picker-day';
 export class DatetimeCalendarNavComponent<T> implements OnInit {
     @Input() config: DatetimePicker<T>;
 
+    public group: DropdownGroup;
     public selected: DatetimePickerDay<T>;
 
     public ngOnInit() {
