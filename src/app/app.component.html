@@ -2,17 +2,34 @@
     <button class="m-10" (click)="isDrawerOpen = !isDrawerOpen">Open Drawer</button>
 </div>
 
-<ngtw-drawer #commentDrawer [isOpen]="isDrawerOpen" [style.--drawer-width]="'300px'"
+<ngtw-drawer #commentDrawer [isOpen]="isDrawerOpen" [style.--drawer-width]="'400px'"
+    (drawerClosed)="isDrawerOpen = false" [isBlur]="true">
+
+    <div header>
+        <p>
+            Panel Title
+        </p>
+    </div>
+
+    <div body>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat nam velit repellat natus mollitia. Eligendi
+            quasi unde illum consequuntur officiis quisquam, facere explicabo, delectus natus reprehenderit aliquid
+            atque culpa voluptas.
+        </p>
+    </div>
+</ngtw-drawer>
+
+<!-- <ngtw-drawer #commentDrawer [isOpen]="isDrawerOpen" [style.--drawer-width]="'400px'"
     (drawerClosed)="isDrawerOpen = false" [isBlur]="true">
 
     <div body>
         <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia libero voluptatibus facilis officiis non
-            doloribus doloremque incidunt odit error laudantium laborum reiciendis qui modi maiores, eum fugiat tempora
-            debitis architecto.
+            Instance 2
         </p>
     </div>
-</ngtw-drawer>
+</ngtw-drawer> -->
+
 
 <div class="m-10 border p-10" style="width: 500px; height: 700px">
     <div class="text-xl font-medium mb-10">Date+Time Picker Component</div>

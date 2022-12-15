@@ -9,9 +9,8 @@
     width: var(--drawer-width);
     height: 100vh;
     background: #fff;
-    transition: all 300ms;
+    transition: all 500ms ease-in-out;
     box-shadow: -3px 0px 6px 1px #00000026;
-    padding: 0px;
     z-index: 99;
     &.position-right {
         right: calc(-1 * var(--drawer-width));

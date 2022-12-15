@@ -1,13 +1,31 @@
 <div class="drawer-container" [class.is-open]="isOpen" [class.position-right]="position === 'right'"
-    [class.position-left]="position === 'left'">
-    <div>
-        <button class="close" (click)="close()">X</button>
+    [class.position-left]="position === 'left'" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+
+    <div class="flex items-start justify-between" style="padding: 1rem;">
+        <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">
+            <ng-content select="[header]"></ng-content>
+        </h2>
+        <div class="ml-3 flex h-7 items-center">
+            <button type="button" (click)="close()"
+                class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
     </div>
-    <div class="header">
-        <ng-content select="[header]"></ng-content>
-    </div>
+
     <div class="body">
-        <ng-content select="[body]"></ng-content>
+        <div class="relative mt-8 flex-1 px-2 sm:px-6">
+            <!-- Replace with your content -->
+            <div class="absolute inset-0 px-4 sm:px-6">
+                <div class="h-full border-gray-200" aria-hidden="true">
+                    <ng-content select="[body]"></ng-content>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
 <div class="drawer-overlay" (click)="close()" [class.drawer-hidden]="isBlur && isOpen"></div>
