@@ -57,6 +57,9 @@
             "range": [
                 "dist/range"
             ],
+            "stepper": [
+              "dist/stepper"
+            ],
             "testimonials-horizontal": [
                 "dist/testimonials-horizontal"
             ]

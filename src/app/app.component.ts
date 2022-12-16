@@ -8,6 +8,7 @@ import { DatetimePickerMode } from '../../projects/datetime-picker/src/lib/datet
 import { DatetimePickerTheme } from '../../projects/datetime-picker/src/lib/datetime-picker-theme';
 import { DropdownGroup } from '../../projects/dropdown/src/lib/dropdown-group';
 import { DropdownItem } from '../../projects/dropdown/src/lib/dropdown-item';
+import { Step } from '../../projects/stepper/src/lib/step';
 import { AComponent } from './a/a.component';
 import { CustomObject } from './custom-object';
 import { Icons } from './icons';
@@ -21,6 +22,17 @@ export class AppComponent {
     public icons = Icons;
     public value$: Subject<number> = new Subject();
 
+    public steps: Step[] = [
+        {
+            label: 'Basic Information',
+            next: {
+                disabled: true
+            }
+        },
+        {
+            label: 'Additional Options'
+        }
+    ]
     public menu: Array<DropdownGroup> = [
         {
             label: 'Group A',

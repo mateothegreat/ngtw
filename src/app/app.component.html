@@ -1,9 +1,26 @@
-<div class="m-10 border p-10" style="width: 500px;">
+<div class="m-10 border p-10" style="width: 900px; height: 700px">
+
+    <div class="text-xl font-medium mb-10">Progress Bar Component</div>
+
+    <ngtw-stepper [steps]="steps"></ngtw-stepper>
+
+</div>
+
+    <div class="flex space-x-5 m-10 border p-10" style="width: 500px;">
 
     <ngtw-dropdown label="Manage Camera"
-                   [show]="true"
                    [items]="menu"></ngtw-dropdown>
 
+    <button #dropdownButton class="border-4 px-2 rounded-xl border-gray-300">Headless Mode (click me)</button>
+
+    <ngtw-dropdown [target]="dropdownButton"
+                   [items]="menu"></ngtw-dropdown>
+
+    <button #dropdownButtonCustom class="border-4 px-2 rounded-xl border-gray-300">Custom Content (click me)</button>
+
+    <ngtw-dropdown [target]="dropdownButtonCustom">
+        <div class="font-green-500">Custom Content</div>
+    </ngtw-dropdown>
 </div>
 
 <div class="m-10 border p-10" style="width: 500px;">

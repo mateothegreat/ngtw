@@ -11,7 +11,7 @@
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "release:range": "cd projects/range && npm version patch && cd ../../ && ng build range && cd dist/* && npm publish --access=public",
-        "release:dropdown": "cd projects/dropdown && npm version patch && cd ../../ && ng build range && cd dist/* && npm publish --access=public"
+        "release:dropdown": "cd projects/dropdown && npm version patch && cd ../../ && ng build dropdown && cd dist/dropdown && npm publish --access=public"
     },
     "private": true,
     "dependencies": {

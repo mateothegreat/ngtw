@@ -2,6 +2,7 @@ import { DatetimePickerComponent } from '../../projects/datetime-picker/src/lib/
 import { DividerComponent } from '../../projects/divider/src/lib/divider.component';
 import { DropdownComponent } from '../../projects/dropdown/src/lib/dropdown.component';
 import { ProgressBarComponent } from '../../projects/progress-bar/src/lib/progress-bar.component';
+import { StepperComponent } from '../../projects/stepper/src/lib/stepper.component';
 import { AComponent } from './a/a.component';
 
 import { AccordionComponent } from '../../projects/accordion/src/lib/accordion.component';
@@ -34,7 +35,9 @@ SwiperCore.use([ Pagination, Navigation ]);
         DropdownComponent,
         HelperComponent,
         ProgressBarComponent,
-        RangeComponent, SwiperModule, TestimonialsHorizontalComponent ],
+        RangeComponent,
+        StepperComponent,
+        SwiperModule, TestimonialsHorizontalComponent ],
     providers: [],
     bootstrap: [ AppComponent ]
 })
