@@ -50,8 +50,6 @@ export class StepperComponent implements OnInit {
     }
 
     public next(): void {
-        console.log(this.steps.indexOf(this.current));
-        console.log(this.steps.length - 1);
         if (this.steps.indexOf(this.current) < this.steps.length - 1) {
             this.current = this.steps[this.steps.indexOf(this.current) + 1];
             this.changed.emit({ step: this.current });
