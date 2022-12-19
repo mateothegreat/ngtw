@@ -1,6 +1,9 @@
 module.exports = {
 
-    content: ["./src/**/*.{html,ts}", "./projects/**/*.ts"],
+    content: [
+        "./src/**/*.{html,ts}",
+        "./projects/**/*.ts"
+    ],
 
     theme: {
 
@@ -10,7 +13,7 @@ module.exports = {
 
                 'spin-slow': 'spin 3s linear infinite'
 
-            },
+            }
             // colors: {
             //     gray: {
             //         '50': '#fafafa',
@@ -224,7 +227,7 @@ module.exports = {
     plugins: [
 
         require('@tailwindcss/forms'),
-        require("tailwindcss-animate"),
+        require("tailwindcss-animate")
 
 
     ]

@@ -37,6 +37,7 @@ export class DropdownComponent implements AfterViewInit {
     @ViewChild('button', { static: false }) private buttonRef: ElementRef;
     @ViewChild('popover', { static: false }) private popoverRef: ElementRef;
 
+    @Input() public manual: boolean;
     @Input() public target: HTMLElement;
     @Input() public label: string;
     @Input() public items: Array<DropdownGroup> | DropdownGroup;
@@ -44,7 +45,7 @@ export class DropdownComponent implements AfterViewInit {
     @Input() public extra: Array<string> | string;
     @Input() public placement: Placement = 'bottom-start';
 
-    @Output() public clicked: EventEmitter<DropdownItem|DropdownGroup> = new EventEmitter();
+    @Output() public clicked: EventEmitter<DropdownItem | DropdownGroup> = new EventEmitter();
     private instance: Instance;
 
     public _items: Array<DropdownGroup> = [];
@@ -56,14 +57,14 @@ export class DropdownComponent implements AfterViewInit {
 
     @HostListener('document:click', [ '$event' ])
     private onDocumentClick($event: MouseEvent) {
-        if(this.buttonRef) {
+        if (this.buttonRef) {
             if (!this.show && $event.target === this.buttonRef.nativeElement) {
                 this.open();
             } else {
                 this.close();
             }
         } else {
-            if (!this.show && $event.target === this.target) {
+            if (!this.show && ($event.target === this.target || this.target.contains($event.target as HTMLElement))) {
                 this.open();
             } else {
                 this.close();
@@ -83,7 +84,7 @@ export class DropdownComponent implements AfterViewInit {
 
     public open(): void {
         this.show = !this.show;
-        if(this.show) {
+        if (this.show) {
             if (this.target) {
                 this.instance = createPopper(this.target, this.popoverRef.nativeElement, {
                     placement: this.placement

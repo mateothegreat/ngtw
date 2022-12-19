@@ -30,6 +30,12 @@
             "datetime-picker": [
               "dist/datetime-picker"
             ],
+            "breadcrumbs": [
+              "dist/breadcrumbs"
+            ],
+            "button-group": [
+              "dist/button-group"
+            ],
             "divider": [
               "dist/divider"
             ],
@@ -39,7 +45,7 @@
             "dropdown": [
               "dist/dropdown"
             ],
-            "dynamic-component-factory": [
+            "@ngtw/dynamic-component-factory": [
                 "dist/dynamic-component-factory"
             ],
             "feedback-form": [
@@ -48,8 +54,14 @@
             "helper": [
                 "dist/helper"
             ],
+            "input": [
+              "dist/input"
+            ],
             "modal": [
                 "dist/modal"
+            ],
+            "popup": [
+              "dist/popup"
             ],
             "progress-bar": [
               "dist/progress-bar"
@@ -60,8 +72,17 @@
             "stepper": [
               "dist/stepper"
             ],
+            "table": [
+              "dist/table"
+            ],
             "testimonials-horizontal": [
                 "dist/testimonials-horizontal"
+            ],
+            "toaster": [
+              "dist/toaster"
+            ],
+            "toggle": [
+              "dist/toggle"
             ]
         },
         "target": "ES2022",

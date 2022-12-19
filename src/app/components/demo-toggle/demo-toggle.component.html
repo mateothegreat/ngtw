@@ -1,0 +1,10 @@
+<div class="flex flex-col gap-y-10 m-10 p-10">
+    <div>
+        <div class="text-xl">Table</div>
+        <div class="text-md text-gray-400">Navigate between steps such as with a form or wizard.</div>
+    </div>
+    <ngtw-toggle [control]="control"></ngtw-toggle>
+    {{ control.value }}
+    <ngtw-toggle [control]="control2" unchecked="bg-red-200" checked="bg-green-200"></ngtw-toggle>
+    {{ control2.value }}
+</div>

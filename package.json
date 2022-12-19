@@ -10,8 +10,17 @@
         "start": "ng serve --port 4222",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
-        "release:range": "cd projects/range && npm version patch && cd ../../ && ng build range && cd dist/* && npm publish --access=public",
-        "release:dropdown": "cd projects/dropdown && npm version patch && cd ../../ && ng build dropdown && cd dist/dropdown && npm publish --access=public"
+        "release:breadcrumbs": "cd projects/breadcrumbs && npm version patch && cd ../../ && ng build breadcrumbs && cd dist/breadcrumbs && npm publish --access=public",
+        "release:dropdown": "cd projects/dropdown && npm version patch && cd ../../ && ng build dropdown && cd dist/dropdown && npm publish --access=public",
+        "release:dynamic-component-factory": "cd projects/dynamic-component-factory && npm version patch && cd ../../ && ng build dynamic-component-factory && cd dist/dynamic-component-factory && npm publish --access=public",
+        "release:range": "cd projects/range && npm version patch && cd ../../ && ng build range && cd dist/range && npm publish --access=public",
+        "release:stepper": "cd projects/stepper && npm version patch && cd ../../ && ng build stepper && cd dist/stepper && npm publish --access=public",
+        "release:input": "cd projects/input && npm version patch && cd ../../ && ng build input && cd dist/input && npm publish --access=public",
+        "release:popup": "cd projects/popup && npm version patch && cd ../../ && ng build popup && cd dist/popup && npm publish --access=public",
+        "release:table": "cd projects/table && npm version patch && cd ../../ && ng build table && cd dist/table && npm publish --access=public",
+        "release:toaster": "cd projects/toaster && npm version patch && cd ../../ && ng build toaster && cd dist/toaster && npm publish --access=public",
+        "release:toggle": "cd projects/toggle && npm version patch && cd ../../ && ng build toggle && cd dist/toggle && npm publish --access=public",
+        "release:button-group": "cd projects/button-group && npm version patch && cd ../../ && ng build button-group && cd dist/button-group && npm publish --access=public"
     },
     "private": true,
     "dependencies": {
@@ -23,6 +32,7 @@
         "@angular/platform-browser": "^15.0.0",
         "@angular/platform-browser-dynamic": "^15.0.0",
         "@angular/router": "^15.0.0",
+        "@ngtw/toaster": "^0.0.6",
         "@popperjs/core": "^2.11.6",
         "date-fns": "^2.29.3",
         "js-beautify": "^1.14.7",

@@ -1,0 +1,12 @@
+{
+    "name": "@ngtw/popup",
+    "version": "0.0.5",
+    "peerDependencies": {
+        "@angular/common": "^15.0.0",
+        "@angular/core": "^15.0.0",
+        "@ngtw/dynamic-component-factory": "^0.0.2"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    }
+}

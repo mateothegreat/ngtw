@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 
@@ -6,8 +7,7 @@ import { AccordionTab } from '../../projects/accordion/src/lib/accordion-tab';
 import { DatetimePicker } from '../../projects/datetime-picker/src/lib/datetime-picker';
 import { DatetimePickerMode } from '../../projects/datetime-picker/src/lib/datetime-picker-mode';
 import { DatetimePickerTheme } from '../../projects/datetime-picker/src/lib/datetime-picker-theme';
-import { DropdownGroup } from '../../projects/dropdown/src/lib/dropdown-group';
-import { DropdownItem } from '../../projects/dropdown/src/lib/dropdown-item';
+import { PopupService } from '../../projects/popup/src/lib/popup.service';
 import { Step } from '../../projects/stepper/src/lib/step';
 import { AComponent } from './a/a.component';
 import { CustomObject } from './custom-object';
@@ -22,36 +22,22 @@ export class AppComponent {
     public icons = Icons;
     public value$: Subject<number> = new Subject();
 
+    public formGroup = new FormGroup({
+        name: new FormControl('example', [ Validators.required, Validators.minLength(3) ])
+    });
+
     public steps: Step[] = [
         {
-            label: 'Basic Information',
+            title: 'Basic Information',
+            subtitle: 'Optional subtitle goes here.',
             next: {
                 disabled: true
             }
         },
         {
-            label: 'Additional Options'
-        }
-    ]
-    public menu: Array<DropdownGroup> = [
-        {
-            label: 'Group A',
-            items: [
-                {
-                    label: 'Item 1'
-                },
-                {
-                    label: 'Item 3 (disabled)',
-                    disabled: true
-                },
-                {
-                    label: 'Item 2 and on..',
-                    extra: [ 'text-red-500', 'font-bold' ],
-                    click: (item: DropdownItem) => {
-                        console.log(item);
-                    }
-                }
-            ]
+            number: '#2',
+            title: 'Custom step number',
+            subtitle: 'Optional subtitle goes here.'
         }
     ];
 
@@ -118,9 +104,40 @@ export class AppComponent {
         }
     ];
 
-    public constructor() {
+    public constructor(public readonly popupService: PopupService) {
         this.value$.subscribe((value) => {
             console.log(`new value: ${ value }`);
+        });
+    }
+
+    public openPopupStatic(): void {
+        this.popupService.open({
+            title: 'Example popup!',
+            subtitle: 'This is an example popup!',
+            classes: 'bg-slate-100',
+            content: 'This is an example popup!This is an example popup!This is an example popup!This is an example popup!This is an example popup!This is an example popup!'
+        });
+    }
+
+    public openPopupComponent(): void {
+        this.popupService.open({
+            title: 'Example popup!',
+            subtitle: 'This is an example popup!',
+            component: AComponent,
+            buttons: [
+                {
+                    label: 'Cancel',
+                    classes: 'bg-gray-500 text-red-500',
+                    action: () => {
+                    }
+                },
+                {
+                    label: 'Enable',
+                    classes: 'bg-gray-500 text-red-500',
+                    action: () => {
+                    }
+                }
+            ]
         });
     }
 }

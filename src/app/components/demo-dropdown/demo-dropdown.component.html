@@ -1,0 +1,43 @@
+<div class="flex flex-col gap-y-10 m-10 p-10">
+    <div>
+        <div class="text-xl">Table</div>
+        <div class="text-md text-gray-400">Navigate between steps such as with a form or wizard.</div>
+    </div>
+
+    <ngtw-dropdown label="Manage Camera"
+                   [items]="menu"></ngtw-dropdown>
+
+    <button #dropdownButton class="border-4 px-2 rounded-xl border-gray-300">Headless Mode (click me)</button>
+
+    <ngtw-dropdown [target]="dropdownButton"
+                   [items]="menu"></ngtw-dropdown>
+
+    <button #dropdownButtonCustom class="border-4 px-2 rounded-xl border-gray-300">Custom Content (click me)</button>
+
+    <ngtw-dropdown [target]="dropdownButtonCustom">
+        <div class="font-green-500">Custom Content</div>
+    </ngtw-dropdown>
+
+    <div #dropdownTarget class="w-20 cursor-pointer hover:fill-fuchsia-500">
+        <svg viewBox="0 0 426.667 426.667" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <g>
+                    <circle cx="42.667" cy="213.333" r="42.667"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <circle cx="213.333" cy="213.333" r="42.667"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <circle cx="384" cy="213.333" r="42.667"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <ngtw-dropdown #dropdownManual
+                   [target]="dropdownTarget"
+                   [items]="menu"></ngtw-dropdown>
+</div>
