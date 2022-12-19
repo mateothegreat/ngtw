@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { DropdownComponent } from 'dropdown';
+import { DropdownComponent } from '@ngtw/dropdown';
 import { DropdownGroup } from '../../../../projects/dropdown/src/lib/dropdown-group';
 import { DropdownItem } from '../../../../projects/dropdown/src/lib/dropdown-item';
 

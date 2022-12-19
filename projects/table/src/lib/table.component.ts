@@ -27,7 +27,7 @@ import { TableEventClick } from './table-event-click';
                          class="flex items-center">
                         {{ column.fn ? column.fn(row[column.property]) : row[column.property] }}
                     </div>
-                    <ngtw-table-column *ngIf="column.component" [column]="column" [data]="row[column.property]"></ngtw-table-column>
+                    <ngtw-table-column *ngIf="column.component" [column]="column" [data]="column.property ? row[column.property] : row"></ngtw-table-column>
                 </td>
             </tr>
             </tbody>

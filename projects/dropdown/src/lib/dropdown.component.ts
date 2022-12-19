@@ -15,7 +15,6 @@ import { DropdownItem } from './dropdown-item';
                 {{ label }}
             </button>
         </div>
-
         <div [ngClass]="show ? 'block' : 'hidden'" class="absolute z-50" #popover>
             <div class="drop-shadow-2xl bg-gray-50 border border-gray-200 text-base z-50 rounded rounded-lg shadow-lg mt-1 animate-bound">
                 <div *ngFor="let group of this._items; let i = index" [class.pb-2]="i + 1 === this._items.length" class="text-sm font-medium block w-full whitespace-nowrap">
@@ -64,6 +63,9 @@ export class DropdownComponent implements AfterViewInit {
                 this.close();
             }
         } else {
+            $event.preventDefault();
+            $event.stopPropagation();
+            
             if (!this.show && ($event.target === this.target || this.target.contains($event.target as HTMLElement))) {
                 this.open();
             } else {

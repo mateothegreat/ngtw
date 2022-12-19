@@ -10,10 +10,24 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
         ReactiveFormsModule
     ],
     template: `
-        <div class="w-12 cursor-pointer relative">
-            <input *ngIf="!control" type="checkbox" [name]="name" id="toggle1" class="focus:outline-none checkbox w-4 h-4 rounded-full border-2 border-gray-300 bg-white absolute m-1 shadow-sm appearance-none cursor-pointer">
-            <input *ngIf="control" [formControl]="control" type="checkbox" [name]="name" [id]="name" class="focus:outline-none checkbox w-4 h-4 rounded-full border-2 border-gray-300 bg-white absolute m-1 shadow-sm appearance-none cursor-pointer">
-            <label [for]="name" [ngClass]="control.value ? checked : unchecked" class="block w-12 h-6 overflow-hidden rounded-full border-2 border-slate-300 bg-gray-300 cursor-pointer"></label>
+        <div class="cursor-pointer relative"
+             style="width: 50px">
+            <input *ngIf="!control" type="checkbox"
+                   [name]="name"
+                   id="toggle1"
+                   class="focus:outline-none checkbox rounded-full border-2 border-gray-300 bg-white absolute m-1 shadow-sm appearance-none cursor-pointer"
+                   style="width: 26px; height: 26px; margin-top: -1px">
+            <input *ngIf="control"
+                   [formControl]="control"
+                   type="checkbox"
+                   [name]="name"
+                   [id]="name"
+                   class="focus:outline-none checkbox rounded-full border-2 border-gray-300 bg-white absolute shadow-sm appearance-none cursor-pointer"
+                   style="width: 26px; height: 26px; margin-top: -1px">
+            <label [for]="name"
+                   [ngClass]="control.value ? checked : unchecked"
+                   class="block overflow-hidden rounded-full border-2 border-slate-300 bg-gray-300 cursor-pointer"
+                   style="width: 50px; height: 24px"></label>
         </div>
     `,
     styles: [
@@ -21,17 +35,13 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
             .checkbox:checked {
                 right: 0;
             }
-
-            .checkbox:checked + .toggle-label {
-                /*background-color: #909fff;*/
-            }
         `
     ]
 })
 export class ToggleComponent {
     @Input() public control: FormControl;
     @Input() public unchecked: string = 'bg-slate-200';
-    @Input() public checked: string = 'bg-green-200';
+    @Input() public checked: string = 'bg-green-200 border-green-400';
 
     public name = Math.random().toString();
 

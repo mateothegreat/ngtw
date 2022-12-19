@@ -75,6 +75,9 @@
             "table": [
               "dist/table"
             ],
+            "tabs": [
+              "dist/tabs"
+            ],
             "testimonials-horizontal": [
                 "dist/testimonials-horizontal"
             ],

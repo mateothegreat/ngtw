@@ -42,6 +42,6 @@ import { Breadcrumb } from './breadcrumb';
 })
 export class BreadcrumbsComponent {
     @Input() public items: Breadcrumb[];
-    @Input() public home: boolean = true;
+    @Input() public home: string;
     @Input() public classes: string = 'text-sm';
 }

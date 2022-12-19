@@ -1,6 +1,6 @@
 {
-    "name": "@ngtw/table",
-    "version": "0.0.13",
+    "name": "@ngtw/tabs",
+    "version": "0.0.7",
     "peerDependencies": {
         "@angular/common": "^15.0.0",
         "@angular/core": "^15.0.0"

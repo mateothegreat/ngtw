@@ -21,6 +21,7 @@ import { ProgressBarComponent } from '../../projects/progress-bar/src/lib/progre
 import { RangeComponent } from '../../projects/range/src/lib/range.component';
 import { StepperComponent } from '../../projects/stepper/src/lib/stepper.component';
 import { TableComponent } from '../../projects/table/src/lib/table.component';
+import { TabsComponent } from '../../projects/tabs/src/lib/tabs.component';
 
 import { TestimonialsHorizontalComponent } from '../../projects/testimonials-horizontal/src/lib/testimonials-horizontal.component';
 import { ToggleComponent } from '../../projects/toggle/src/lib/toggle.component';
@@ -32,6 +33,7 @@ import { DemoButtonGroupComponent } from './components/demo-button-group/demo-bu
 import { DemoDropdownComponent } from './components/demo-dropdown/demo-dropdown.component';
 import { CustomTableRowAComponent } from './components/demo-table/custom-table-row-a/custom-table-row-a.component';
 import { DemoTableComponent } from './components/demo-table/demo-table.component';
+import { DemoTabsComponent } from './components/demo-tabs/demo-tabs.component';
 import { DemoToasterComponent } from './components/demo-toaster/demo-toaster.component';
 import { DemoToggleComponent } from './components/demo-toggle/demo-toggle.component';
 import { LibraryHeaderComponent } from './library-header/library-header.component';
@@ -51,7 +53,8 @@ SwiperCore.use([ Pagination, Navigation ]);
         DemoToasterComponent,
         DemoDropdownComponent,
         DemoButtonGroupComponent,
-        DemoBreadcrumbsComponent
+        DemoBreadcrumbsComponent,
+        DemoTabsComponent
     ],
     imports: [
         BrowserModule,
@@ -87,6 +90,10 @@ SwiperCore.use([ Pagination, Navigation ]);
                 component: DemoTableComponent
             },
             {
+                path: 'demo/tabs',
+                component: DemoTabsComponent
+            },
+            {
                 path: 'demo/toaster',
                 component: DemoToasterComponent
             },
@@ -96,7 +103,8 @@ SwiperCore.use([ Pagination, Navigation ]);
             }
         ]),
         ButtonGroupComponent,
-        BreadcrumbsComponent
+        BreadcrumbsComponent,
+        TabsComponent
     ],
     providers: [],
     bootstrap: [ AppComponent ]
