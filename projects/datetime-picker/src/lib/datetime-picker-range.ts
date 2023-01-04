@@ -1,6 +1,10 @@
 export interface DatetimePickerRange {
-
-    start: Date;
-    end: Date;
-
+    start: {
+        date: Date,
+        selected: Date
+    };
+    end: {
+        date: Date,
+        selected: Date
+    };
 }

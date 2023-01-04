@@ -5,6 +5,7 @@ export class DatetimePickerDay<T> {
     public week?: number;
     public month?: number;
     public year?: number;
+    public row?: number;
 
     public data?: T;
 

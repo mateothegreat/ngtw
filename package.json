@@ -16,6 +16,7 @@
         "release:range": "cd projects/range && npm version patch && cd ../../ && ng build range && cd dist/range && npm publish --access=public",
         "release:stepper": "cd projects/stepper && npm version patch && cd ../../ && ng build stepper && cd dist/stepper && npm publish --access=public",
         "release:input": "cd projects/input && npm version patch && cd ../../ && ng build input && cd dist/input && npm publish --access=public",
+        "release:panel": "cd projects/panel && npm version patch && cd ../../ && ng build panel && cd dist/panel && npm publish --access=public",
         "release:popup": "cd projects/popup && npm version patch && cd ../../ && ng build popup && cd dist/popup && npm publish --access=public",
         "release:table": "cd projects/table && npm version patch && cd ../../ && ng build table && cd dist/table && npm publish --access=public",
         "release:tabs": "cd projects/tabs && npm version patch && cd ../../ && ng build tabs && cd dist/tabs && npm publish --access=public",

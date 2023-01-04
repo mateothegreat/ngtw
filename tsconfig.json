@@ -60,6 +60,9 @@
             "modal": [
                 "dist/modal"
             ],
+            "panel": [
+              "dist/panel"
+            ],
             "popup": [
               "dist/popup"
             ],

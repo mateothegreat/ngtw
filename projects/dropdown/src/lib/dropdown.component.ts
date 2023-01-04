@@ -11,7 +11,7 @@ import { DropdownItem } from './dropdown-item';
     selector: 'ngtw-dropdown',
     template: `
         <div *ngIf="label" class="flex flex-wrap">
-            <button #button [ngClass]="extra" class="text-white font-bold text-sm transform active:scale-95 transition-transform px-5 py-3 rounded rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-200 bg-gray-500 active:bg-gray-700 drop-shadow-xl">
+            <button #button [ngClass]="extra" class="text-white font-bold text-sm transform active:scale-95 transition-transform px-5 py-3 rounded rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-200 bg-gray-500 active:bg-gray-700">
                 {{ label }}
             </button>
         </div>
@@ -65,7 +65,7 @@ export class DropdownComponent implements AfterViewInit {
         } else {
             $event.preventDefault();
             $event.stopPropagation();
-            
+
             if (!this.show && ($event.target === this.target || this.target.contains($event.target as HTMLElement))) {
                 this.open();
             } else {

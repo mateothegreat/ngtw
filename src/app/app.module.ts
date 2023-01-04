@@ -30,7 +30,9 @@ import { AComponent } from './a/a.component';
 import { AppComponent } from './app.component';
 import { DemoBreadcrumbsComponent } from './components/demo-breadcrumbs/demo-breadcrumbs.component';
 import { DemoButtonGroupComponent } from './components/demo-button-group/demo-button-group.component';
+import { DemoDatetimePickerComponent } from './components/demo-datetime-picker/demo-datetime-picker.component';
 import { DemoDropdownComponent } from './components/demo-dropdown/demo-dropdown.component';
+import { DemoPanelComponent } from './components/demo-panel/demo-panel.component';
 import { CustomTableRowAComponent } from './components/demo-table/custom-table-row-a/custom-table-row-a.component';
 import { DemoTableComponent } from './components/demo-table/demo-table.component';
 import { DemoTabsComponent } from './components/demo-tabs/demo-tabs.component';
@@ -54,7 +56,9 @@ SwiperCore.use([ Pagination, Navigation ]);
         DemoDropdownComponent,
         DemoButtonGroupComponent,
         DemoBreadcrumbsComponent,
-        DemoTabsComponent
+        DemoTabsComponent,
+        DemoPanelComponent,
+        DemoDatetimePickerComponent
     ],
     imports: [
         BrowserModule,
@@ -82,8 +86,16 @@ SwiperCore.use([ Pagination, Navigation ]);
                 component: DemoButtonGroupComponent
             },
             {
+                path: 'demo/datetime-picker',
+                component: DemoDatetimePickerComponent
+            },
+            {
                 path: 'demo/dropdown',
                 component: DemoDropdownComponent
+            },
+            {
+                path: 'demo/panel',
+                component: DemoPanelComponent
             },
             {
                 path: 'demo/table',
