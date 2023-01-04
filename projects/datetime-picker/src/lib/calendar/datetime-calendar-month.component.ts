@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
 import { DynamicComponentFactoryService } from '@ngtw/dynamic-component-factory';
-import { addDays, subDays } from 'date-fns';
 import { DatetimePicker } from '../datetime-picker';
 import { DatetimePickerDay } from '../datetime-picker-day';
 import { DatetimePickerGroup } from '../datetime-picker-group';
@@ -13,13 +12,17 @@ import { DatetimeCalendarNavComponent } from './datetime-calendar-nav.component'
 
 @Component({
     standalone: true,
-    imports: [ CommonModule, DatetimeCalendarNavComponent ],
+    imports: [
+        CommonModule,
+        DatetimeCalendarNavComponent
+    ],
     selector: 'ngtw-datetime-calendar-month',
     template: `
         <ng-container #timeWrapper></ng-container>
 
         <ngtw-datetime-calendar-nav #nav
                                     [config]="config"
+                                    [selected]="currentMonth"
                                     [range]="range"></ngtw-datetime-calendar-nav>
         <div class="p-2">
             <div class="grid grid-cols-7 text-center text-xs leading-6 text-gray-500 border-b pb-2">
@@ -28,14 +31,14 @@ import { DatetimeCalendarNavComponent } from './datetime-calendar-nav.component'
                 </div>
             </div>
             <div class="mt-2 grid grid-cols-7 text-sm">
-                <div *ngFor="let day of out; let i = index"
+                <div *ngFor="let day of calendar; let i = index"
                      [class.range-start]="isSelected(day) && day.date.getDate() === start?.date.getDate()"
                      [class.range-between]="isSelected(day) && day.date.getDate()"
                      [class.range-end]="isSelected(day) && day.date.getDate() === end?.date.getDate()"
                      (click)="onClick(day)"
-                     class="my-2 border-green-500 hover:bg-green-200 border-transparent border-b-4">
-                    <button [class.text-gray-300]="!isSelected(day) && (day.date.getTime() < range.start.date.getTime() || day.date.getTime() > range.end.date.getTime())"
-                            class="mx-auto flex h-8 w-8 px-2 items-center justify-center rounded text-gray-600">
+                     class="my-2  hover:bg-green-200 border-transparent border-b-4 text-green-600">
+                    <button [class.text-gray-400]="!isInRange(day) || (!isSelected(day) && (day.date.getTime() < range.start.date.getTime() || day.date.getTime() > range.end.date.getTime()))"
+                            class="mx-auto flex h-8 w-8 px-2 items-center justify-center rounded">
                         <time datetime="2022-01-21">
                             {{ day.date.getDate() }}
                         </time>
@@ -82,9 +85,10 @@ export class DatetimeCalendarMonthComponent<T> implements OnInit, AfterViewInit 
 
     public now = new Date();
     public current: Date;
-    public rows: [ DatetimePickerDay<T>[] ];
+    public calendar: DatetimePickerDay<T>[];
     public out: DatetimePickerDay<T>[] = [];
     public skipAfter: number;
+    public currentMonth: DatetimePickerMonth<T>;
 
     public days: Array<{ number: number, long: string, short: string }> = [
         { number: 0, long: 'Sunday', short: 'Sun' },
@@ -106,25 +110,32 @@ export class DatetimeCalendarMonthComponent<T> implements OnInit, AfterViewInit 
 
     public ngAfterViewInit() {
         this.nav.change$.subscribe(month => {
-            console.log(month);
+            this.setup(new Date(month.year, month.month, 1));
         });
     }
 
-    public setup() {
+    public setup(current?: Date): void {
         const days = DatetimePickerUtilities.getDaysBetween(this.range.start.date, this.range.end.date);
-        this.current = days[0].date;
+        this.current = current || this.range.start.selected || days[0].date;
 
-        for (let i = days[0].day; i > 0; i--) {
-            this.out.push(new DatetimePickerDay<T>(subDays(days[0].date, i)));
-        }
+        this.currentMonth = {
+            name: DatetimePickerUtilities.MONTHS[this.current.getMonth()].name,
+            month: this.current.getMonth(),
+            year: this.current.getFullYear()
+        };
 
-        this.out = [ ...this.out, ...days ];
+        //
+        // Spread out days that are in each month(s) within the range.start and range.end values.
+        //
+        const selected = DatetimePickerUtilities.reduce(this.currentMonth, this.range, this.range.start.selected, this.range.end.selected);
+        const padColumnsBefore = 6 - selected[0].date.getDay();
+        const padColumnsAfter = 6 - selected[selected.length - 1].date.getDay();
 
-        const daysLeft = new Date(this.current.getFullYear(), this.current.getMonth(), 0).getDate() - days[days.length - 1].date.getDate();
-
-        for (let i = 1; i <= daysLeft; i++) {
-            this.out.push(new DatetimePickerDay<T>(addDays(days[days.length - 1].date, i)));
-        }
+        this.calendar = [
+            ...Array.from({ length: padColumnsBefore }, (_, i) => new DatetimePickerDay<T>(new Date(selected[0].date.getFullYear(), selected[0].date.getMonth(), selected[0].date.getDate() - (padColumnsBefore - i)))),
+            ...selected,
+            ...Array.from({ length: padColumnsAfter }, (_, i) => new DatetimePickerDay<T>(new Date(selected[selected.length - 1].date.getFullYear(), selected[selected.length - 1].date.getMonth(), selected[selected.length - 1].date.getDate() + (i + 1))))
+        ];
     }
 
     public onClick(day: DatetimePickerDay<T>) {
@@ -136,7 +147,6 @@ export class DatetimeCalendarMonthComponent<T> implements OnInit, AfterViewInit 
                 this.start = day;
                 this.end = null;
                 this.timeShow('start');
-
             } else {
                 if (day.date.getDate() > this.start.date.getDate()) {
                     this.end = day;
@@ -154,6 +164,10 @@ export class DatetimeCalendarMonthComponent<T> implements OnInit, AfterViewInit 
                 }
             }
         }
+    }
+
+    public isInRange(day: DatetimePickerDay<T>): boolean {
+        return day.date.getTime() >= this.range.start.selected.getTime() && day.date.getTime() <= this.range.end.selected.getTime();
     }
 
     public isSelected(day: DatetimePickerDay<T>): boolean {

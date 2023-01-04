@@ -8,10 +8,17 @@ import { DatetimePickerTheme } from '../../../../projects/datetime-picker/src/li
 @Component({
     selector: 'app-demo-datetime-picker',
     template: `
-        <div class="p-10">
-            <ngtw-datetime-picker [config]="config"
-                                  [range]="range"
-                                  (selected)="onSelection($event)"></ngtw-datetime-picker>
+        <div class="flex">
+            <div class="p-10">
+                <ngtw-datetime-picker [config]="config"
+                                      [range]="range"
+                                      (selected)="onSelection($event)"></ngtw-datetime-picker>
+            </div>
+            <div class="p-10">
+                <ngtw-datetime-picker [config]="config"
+                                      [range]="range2"
+                                      (selected)="onSelection($event)"></ngtw-datetime-picker>
+            </div>
         </div>
     `
 })
@@ -23,12 +30,22 @@ export class DemoDatetimePickerComponent {
     };
     public range: DatetimePickerRange = {
         start: {
-            date: new Date('2022-07-08 00:00:00'),
-            selected: new Date('2023-01-07 00:00:00')
+            date: new Date('2022-06-07 00:00:00'),
+            selected: new Date('2022-06-08 00:00:00')
         },
         end: {
-            date: new Date('2023-01-15 00:00:00'),
-            selected: new Date('2023-01-09 00:00:00')
+            date: new Date('2022-06-21 00:00:00'),
+            selected: new Date('2022-06-15 00:00:00')
+        }
+    };
+    public range2: DatetimePickerRange = {
+        start: {
+            date: new Date('2022-09-07 00:00:00'),
+            selected: new Date('2022-11-08 00:00:00')
+        },
+        end: {
+            date: new Date('2023-12-15 00:00:00'),
+            selected: new Date('2022-12-15 00:00:00')
         }
     };
 

@@ -1,10 +1,14 @@
-export interface DatetimePickerRange {
-    start: {
+export class DatetimePickerRange {
+    public start: {
         date: Date,
-        selected: Date
+        selected?: Date
     };
-    end: {
+    public end: {
         date: Date,
-        selected: Date
+        selected?: Date
     };
+
+    public constructor(range: DatetimePickerRange) {
+        Object.assign(this, range);
+    }
 }

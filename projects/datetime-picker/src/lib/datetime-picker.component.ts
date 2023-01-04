@@ -9,7 +9,6 @@ import { DatetimePicker } from './datetime-picker';
 import { DatetimePickerDay } from './datetime-picker-day';
 import { DatetimePickerGroup } from './datetime-picker-group';
 import { DatetimePickerMode } from './datetime-picker-mode';
-import { DatetimePickerMonth } from './datetime-picker-month';
 import { DatetimePickerRange } from './datetime-picker-range';
 import { DatetimePickerTimeComponent } from './datetime-picker-time.component';
 import { DatetimePickerUtilities } from './datetime-picker-utilities';
@@ -26,8 +25,6 @@ import { DatetimePickerUtilities } from './datetime-picker-utilities';
     selector: 'ngtw-datetime-picker',
     template: `
         <div class="h-[400px] w-[500px]">
-            <!--            <div class="absolute bg-black w-full h-full backdrop-blur-xl backdrop-filter backdrop-brightness-50 backdrop-saturate-150"></div>-->
-
             <div class="flex border-2 border-gray-200 rounded-lg overflow-hidden">
                 <div class="w-36 p-4 border-r-2 border-gray-100 ">
                     <div *ngFor="let shortcut of shortcuts"
@@ -54,13 +51,13 @@ import { DatetimePickerUtilities } from './datetime-picker-utilities';
 export class DatetimePickerComponent implements OnInit, AfterViewInit {
     @Input() public config: DatetimePicker<any>;
     @Input() public range: DatetimePickerRange;
+    @Input() public current: Date;
 
     @Output() public onSelected: EventEmitter<DatetimePickerRange> = new EventEmitter<DatetimePickerRange>();
     @Output() public selected: EventEmitter<DatetimePickerRange> = new EventEmitter<DatetimePickerRange>();
 
     public shortcuts: Array<DatetimePickerGroup> = [];
     public nav: Array<DatetimePickerGroup> = [];
-    public currentStart: DatetimePickerDay<any>;
     public currentEnd: DatetimePickerDay<any>;
 
     public constructor(private readonly backdropService: BackdropService) {
@@ -70,7 +67,6 @@ export class DatetimePickerComponent implements OnInit, AfterViewInit {
         });
     }
 
-
     public ngOnInit() {
         this.config = new DatetimePicker(this.config);
 
@@ -78,18 +74,13 @@ export class DatetimePickerComponent implements OnInit, AfterViewInit {
         const groups: { [key: number]: Array<DatetimePickerDay<any>> } = DatetimePickerUtilities.groupBy(days, DatetimePickerMode.MONTH);
 
         for (let group in groups) {
-
             this.nav.push({
-
                 type: DatetimePickerMode.WEEK,
                 label: `Week ${ Number.parseInt(group) + 1 }`
-
             });
-
         }
 
         if (this.config.mode === DatetimePickerMode.WEEK) {
-
             this.shortcuts = [
                 {
                     type: DatetimePickerMode.WEEK,
@@ -100,13 +91,7 @@ export class DatetimePickerComponent implements OnInit, AfterViewInit {
                     label: 'Yesterday'
                 }
             ];
-
         }
-
-        this.currentStart = groups[0][0];
-
-        const month = new DatetimePickerMonth(2022, 12);
-
     }
 
     public ngAfterViewInit() {

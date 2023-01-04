@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1672839841501" clover="3.2.0">
+  <project timestamp="1672839841501" name="All files">
+    <metrics statements="35" coveredstatements="29" conditionals="6" coveredconditionals="6" methods="12" coveredmethods="7" elements="53" coveredelements="42" complexity="0" loc="35" ncloc="35" packages="1" files="5" classes="5"/>
+    <file name="datetime-picker-day-format.ts" path="/Users/matthewdavis/workspace/ngtw/app/projects/datetime-picker/src/lib/datetime-picker-day-format.ts">
+      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+    </file>
+    <file name="datetime-picker-day.ts" path="/Users/matthewdavis/workspace/ngtw/app/projects/datetime-picker/src/lib/datetime-picker-day.ts">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="13" count="557" type="stmt"/>
+      <line num="16" count="557" type="stmt"/>
+      <line num="17" count="557" type="stmt"/>
+      <line num="18" count="557" type="stmt"/>
+      <line num="19" count="557" type="stmt"/>
+    </file>
+    <file name="datetime-picker-mode.ts" path="/Users/matthewdavis/workspace/ngtw/app/projects/datetime-picker/src/lib/datetime-picker-mode.ts">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+    </file>
+    <file name="datetime-picker-theme.ts" path="/Users/matthewdavis/workspace/ngtw/app/projects/datetime-picker/src/lib/datetime-picker-theme.ts">
+      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+    </file>
+    <file name="datetime-picker-utilities.ts" path="/Users/matthewdavis/workspace/ngtw/app/projects/datetime-picker/src/lib/datetime-picker-utilities.ts">
+      <metrics statements="16" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="3"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="27" count="1" type="stmt"/>
+      <line num="31" count="1" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="33" count="557" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="39" count="0" type="stmt"/>
+      <line num="43" count="0" type="stmt"/>
+      <line num="44" count="0" type="stmt"/>
+      <line num="45" count="0" type="stmt"/>
+      <line num="46" count="0" type="stmt"/>
+      <line num="49" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>

@@ -6,7 +6,6 @@ import { DropdownComponent, DropdownGroup } from 'projects/dropdown/src/public-a
 import { Subject } from 'rxjs';
 
 import { DatetimePicker } from '../datetime-picker';
-import { DatetimePickerDay } from '../datetime-picker-day';
 import { DatetimePickerMonth } from '../datetime-picker-month';
 import { DatetimePickerRange } from '../datetime-picker-range';
 import { DatetimePickerUtilities } from '../datetime-picker-utilities';
@@ -21,35 +20,29 @@ import { DatetimePickerUtilities } from '../datetime-picker-utilities';
     template: `
         <div class="flex justify-evenly flex-1 h-12 items-center">
             <div class="flex flex-1 border border-2 border-gray-100 rounded h-full">
-                <div class="flex items-center hover:bg-gray-100 cursor-pointer p-2">
-                    <svg class="text-gray-600 cursor-pointer hover:opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <g fill="none">
-                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" fill="currentColor"></path>
-                        </g>
+                <button (click)="previous()" class="fill-gray-300 cursor-pointer hover:fill-blue-400 transform active:scale-75 disabled:active:scale-100 transition-transform">
+                    <svg class="w-8 h-8 rotate-90" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m12 17c-.5 0-1-.2-1.3-.6l-4.2-5.1c-.5-.7-.6-1.5-.3-2.2s.9-1.1 1.6-1.1h8.4c.7 0 1.3.4 1.6 1.1s.2 1.6-.3 2.2l-4.2 5.1c-.3.4-.8.6-1.3.6z"/>
                     </svg>
-                </div>
+                </button>
                 <div class="flex justify-around flex-1 flex text-md items-center justify-center uppercase font-medium">
-                    <div #dropdownTarget class="flex cursor-pointer text-gray-400 hover:text-blue-400">
+                    <div #dropdownTarget class="flex cursor-pointer items-center text-gray-400 fill-gray-200 cursor-pointer ml-1 hover:text-blue-400 hover:fill-blue-400 transform active:scale-90 disabled:active:scale-100 transition-transform">
                         <div class="">
-                            <div>{{ selected.name }}</div>
+                            <div>
+                                {{ selected.name }} {{ selected.year }}
+                            </div>
                             <ngtw-dropdown [target]="dropdownTarget" [items]="dropdownGroups"></ngtw-dropdown>
                         </div>
-                        <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <g fill="none">
-                                    <path d="M7 10l5 5 5-5H7z" fill="currentColor"></path>
-                                </g>
-                            </svg>
-                        </div>
+                        <svg class="ml-1 w-4 h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m12 17c-.5 0-1-.2-1.3-.6l-4.2-5.1c-.5-.7-.6-1.5-.3-2.2s.9-1.1 1.6-1.1h8.4c.7 0 1.3.4 1.6 1.1s.2 1.6-.3 2.2l-4.2 5.1c-.3.4-.8.6-1.3.6z"/>
+                        </svg>
                     </div>
                 </div>
-                <div class="flex items-center hover:bg-gray-100 cursor-pointer p-2">
-                    <svg class="text-gray-400 cursor-pointer hover:opacity-50" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
-                        <g fill="none">
-                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" fill="currentColor"></path>
-                        </g>
+                <button (click)="next()" class="fill-gray-300 cursor-pointer hover:fill-blue-400 transform active:scale-75 disabled:active:scale-100 transition-transform">
+                    <svg class="w-8 h-8 -rotate-90" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m12 17c-.5 0-1-.2-1.3-.6l-4.2-5.1c-.5-.7-.6-1.5-.3-2.2s.9-1.1 1.6-1.1h8.4c.7 0 1.3.4 1.6 1.1s.2 1.6-.3 2.2l-4.2 5.1c-.3.4-.8.6-1.3.6z"/>
                     </svg>
-                </div>
+                </button>
             </div>
         </div>
     `
@@ -89,12 +82,16 @@ export class DatetimeCalendarNavComponent<T> implements OnInit {
                         year: month.getFullYear()
                     });
                 }
-
             });
         }
     }
 
-    public onDayClick(day: DatetimePickerDay<T>): void {
-        this.selected = day;
+    public previous(): void {
+
     }
+
+    public next(): void {
+
+    }
+
 }

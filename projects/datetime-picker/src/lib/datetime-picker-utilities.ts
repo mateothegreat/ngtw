@@ -1,7 +1,10 @@
 import { DatetimePickerDay } from './datetime-picker-day';
 import { DatetimePickerMode } from './datetime-picker-mode';
+import { DatetimePickerMonth } from './datetime-picker-month';
+import { DatetimePickerRange } from './datetime-picker-range';
 
 export class DatetimePickerUtilities {
+    public static readonly ONE_DAY = 1000 * 60 * 60 * 24;
     public static readonly MONTHS: { number: number, name: string }[] = [
         { number: 0, name: 'January' },
         { number: 1, name: 'February' },
@@ -17,13 +20,30 @@ export class DatetimePickerUtilities {
         { number: 11, name: 'December' }
     ];
 
+    public static getNumberOfDaysInRange(start: DatetimePickerDay<any>, end: DatetimePickerDay<any>): number {
+        return Math.round(Math.abs((start.date.getTime() - end.date.getTime()) / (this.ONE_DAY)));
+    }
+
+    public static getSelectionWithinRange(selection: DatetimePickerRange, start: Date, end?: Date): DatetimePickerDay<any>[] {
+        return this.getDaysBetween(selection.start.date, selection.end.date).filter(day => day.date.getTime() >= selection.start.selected.getTime() && day.date.getTime() <= selection.end.selected.getTime());
+    }
+
+    public static reduce(currentMonth: DatetimePickerMonth<any>, selection: DatetimePickerRange, start: Date, end?: Date) {
+        if (!end) {
+            end = selection.end.date;
+        }
+
+        console.log(currentMonth);
+        const last = new Date(currentMonth.year, currentMonth.month + 1, 0);
+        console.log(last);
+        return this.getDaysBetween(selection.start.date, selection.end.date).filter(day => day.date.getTime() >= start.getTime() && day.date.getTime() <= end.getTime());
+    }
+
     public static getDaysBetween(start: Date, end?: Date): Array<DatetimePickerDay<any>> {
         const days: Array<DatetimePickerDay<any>> = [];
-
         for (let arr = [], d = new Date(start); d <= new Date(end); d.setDate(d.getDate() + 1)) {
             days.push(new DatetimePickerDay(new Date(d)));
         }
-
         return days;
     }
 

@@ -17,6 +17,7 @@
         "moduleResolution": "node",
         "importHelpers": true,
         "strictNullChecks": false,
+        "esModuleInterop": true,
         "paths": {
             "@ngtw/*": [
                 "dist/*"
@@ -25,25 +26,25 @@
                 "dist/accordion"
             ],
             "backdrop": [
-              "dist/backdrop"
+                "dist/backdrop"
             ],
             "datetime-picker": [
-              "dist/datetime-picker"
+                "dist/datetime-picker"
             ],
             "breadcrumbs": [
-              "dist/breadcrumbs"
+                "dist/breadcrumbs"
             ],
             "button-group": [
-              "dist/button-group"
+                "dist/button-group"
             ],
             "divider": [
-              "dist/divider"
+                "dist/divider"
             ],
             "drawer": [
-              "dist/drawer"
+                "dist/drawer"
             ],
             "dropdown": [
-              "dist/dropdown"
+                "dist/dropdown"
             ],
             "@ngtw/dynamic-component-factory": [
                 "dist/dynamic-component-factory"
@@ -55,40 +56,40 @@
                 "dist/helper"
             ],
             "input": [
-              "dist/input"
+                "dist/input"
             ],
             "modal": [
                 "dist/modal"
             ],
             "panel": [
-              "dist/panel"
+                "dist/panel"
             ],
             "popup": [
-              "dist/popup"
+                "dist/popup"
             ],
             "progress-bar": [
-              "dist/progress-bar"
+                "dist/progress-bar"
             ],
             "range": [
                 "dist/range"
             ],
             "stepper": [
-              "dist/stepper"
+                "dist/stepper"
             ],
             "table": [
-              "dist/table"
+                "dist/table"
             ],
             "tabs": [
-              "dist/tabs"
+                "dist/tabs"
             ],
             "testimonials-horizontal": [
                 "dist/testimonials-horizontal"
             ],
             "toaster": [
-              "dist/toaster"
+                "dist/toaster"
             ],
             "toggle": [
-              "dist/toggle"
+                "dist/toggle"
             ]
         },
         "target": "ES2022",
@@ -97,6 +98,9 @@
         "lib": [
             "ES2022",
             "dom"
+        ],
+        "typeRoots": [
+            "./node_modules/@types"
         ]
     },
     "angularCompilerOptions": {
