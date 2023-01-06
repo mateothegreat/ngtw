@@ -64,4 +64,8 @@ export class DatetimePickerUtilities {
 
         return groupBy(days, d => d[mode].toString());
     }
+
+    public static pad(n: number): string {
+        return n < 10 ? '0' + n : n.toString();
+    }
 }

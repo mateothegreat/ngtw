@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatetimePickerResult } from '../../../../projects/datetime-picker/src/datetime-picker-result';
 import { DatetimePicker } from '../../../../projects/datetime-picker/src/lib/datetime-picker';
 import { DatetimePickerDayFormat } from '../../../../projects/datetime-picker/src/lib/datetime-picker-day-format';
 import { DatetimePickerMode } from '../../../../projects/datetime-picker/src/lib/datetime-picker-mode';
@@ -49,7 +50,8 @@ export class DemoDatetimePickerComponent {
         }
     };
 
-    public onSelection(range: DatetimePickerRange) {
-        console.log(range);
+    public onSelection(result: DatetimePickerResult) {
+        console.log(result);
+        console.log(result.getDates());
     }
 }
