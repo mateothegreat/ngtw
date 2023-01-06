@@ -28,15 +28,19 @@ export class DatetimePickerUtilities {
         return this.getDaysBetween(selection.start.date, selection.end.date).filter(day => day.date.getTime() >= selection.start.selected.getTime() && day.date.getTime() <= selection.end.selected.getTime());
     }
 
-    public static reduce(currentMonth: DatetimePickerMonth<any>, selection: DatetimePickerRange, start: Date, end?: Date) {
-        if (!end) {
-            end = selection.end.date;
-        }
-
-        console.log(currentMonth);
+    public static reduce(currentMonth: DatetimePickerMonth<any>, selection: DatetimePickerRange, start: Date, end?: Date): DatetimePickerDay<any>[] {
         const last = new Date(currentMonth.year, currentMonth.month + 1, 0);
-        console.log(last);
-        return this.getDaysBetween(selection.start.date, selection.end.date).filter(day => day.date.getTime() >= start.getTime() && day.date.getTime() <= end.getTime());
+        const days = this.getDaysBetween(selection.start.date, selection.end.date);
+        const build = [];
+        for (let i = 0; i < days.length; i++) {
+            if (days[i].date.getFullYear() === currentMonth.year && days[i].date.getMonth() === currentMonth.month) {
+                build.push(days[i]);
+                if (days[i].date.getDate() >= last.getDate()) {
+                    break;
+                }
+            }
+        }
+        return build;
     }
 
     public static getDaysBetween(start: Date, end?: Date): Array<DatetimePickerDay<any>> {

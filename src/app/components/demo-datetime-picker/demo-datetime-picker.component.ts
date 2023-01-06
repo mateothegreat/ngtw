@@ -34,8 +34,8 @@ export class DemoDatetimePickerComponent {
             selected: new Date('2022-06-08 00:00:00')
         },
         end: {
-            date: new Date('2022-06-21 00:00:00'),
-            selected: new Date('2022-06-15 00:00:00')
+            date: new Date('2022-09-21 00:00:00'),
+            selected: new Date('2022-09-15 00:00:00')
         }
     };
     public range2: DatetimePickerRange = {

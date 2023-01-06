@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { DynamicComponentFactoryService } from '@ngtw/dynamic-component-factory';
 import { ButtonGroupComponent } from 'button-group';
 import { DropdownComponent } from 'projects/dropdown/src/public-api';
@@ -17,7 +18,7 @@ import { DatetimePickerRange } from './datetime-picker-range';
     ],
     selector: 'ngtw-datetime-time-picker',
     template: `
-        <div class="h-[365px] w-[335px] absolute flex items-center justify-center rounded-lg backdrop-blur-sm">
+        <div class="h-[365px] w-[420px] absolute flex items-center justify-center rounded-lg backdrop-blur-sm">
             <div class="flex flex-col items-end gap-y-2 bg-white rounded-lg p-4 shadow-xl border">
                 <div class="text-gray-800 text-right">
                     Select <span class="text-green-500 font-bold">{{ mode }}</span> time:
@@ -103,6 +104,8 @@ export class DatetimePickerTimeComponent<T> implements AfterViewInit {
     @ViewChild('hour') hour: ElementRef<HTMLInputElement>;
     @ViewChild('minute') minute: ElementRef<HTMLInputElement>;
     @ViewChild('second') second: ElementRef<HTMLInputElement>;
+
+    @Input() public formGroup: FormGroup;
 
     public mode: 'start' | 'end';
     private elements: {

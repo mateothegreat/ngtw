@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { DynamicComponentFactoryService } from '@ngtw/dynamic-component-factory';
+import { isWithinInterval } from 'date-fns';
 import { DatetimePicker } from '../datetime-picker';
 import { DatetimePickerDay } from '../datetime-picker-day';
 import { DatetimePickerGroup } from '../datetime-picker-group';
@@ -18,11 +20,9 @@ import { DatetimeCalendarNavComponent } from './datetime-calendar-nav.component'
     ],
     selector: 'ngtw-datetime-calendar-month',
     template: `
-        <ng-container #timeWrapper></ng-container>
-
         <ngtw-datetime-calendar-nav #nav
                                     [config]="config"
-                                    [selected]="currentMonth"
+                                    [selected]="current"
                                     [range]="range"></ngtw-datetime-calendar-nav>
         <div class="p-2">
             <div class="grid grid-cols-7 text-center text-xs leading-6 text-gray-500 border-b pb-2">
@@ -70,7 +70,6 @@ import { DatetimeCalendarNavComponent } from './datetime-calendar-nav.component'
     ` ]
 })
 export class DatetimeCalendarMonthComponent<T> implements OnInit, AfterViewInit {
-    @ViewChild('timeWrapper', { read: ViewContainerRef }) private timeWrapper: ViewContainerRef;
     @ViewChild('nav', { read: DatetimeCalendarNavComponent }) private nav: DatetimeCalendarNavComponent<DatetimePickerMonth<T>>;
 
     @Input() public config: DatetimePicker<T>;
@@ -80,15 +79,16 @@ export class DatetimeCalendarMonthComponent<T> implements OnInit, AfterViewInit 
     @Input() public start: DatetimePickerDay<T>;
     @Input() public end: DatetimePickerDay<T>;
     @Input() public onSelected: EventEmitter<DatetimePickerRange> = new EventEmitter<DatetimePickerRange>();
+    @Input() public timeWrapper: ViewContainerRef;
+    @Input() public formGroup: FormGroup;
 
     @Output() public selectedChange: EventEmitter<DatetimePickerRange> = new EventEmitter<DatetimePickerRange>();
 
     public now = new Date();
-    public current: Date;
+    public current: DatetimePickerMonth<T>;
     public calendar: DatetimePickerDay<T>[];
     public out: DatetimePickerDay<T>[] = [];
     public skipAfter: number;
-    public currentMonth: DatetimePickerMonth<T>;
 
     public days: Array<{ number: number, long: string, short: string }> = [
         { number: 0, long: 'Sunday', short: 'Sun' },
@@ -105,37 +105,39 @@ export class DatetimeCalendarMonthComponent<T> implements OnInit, AfterViewInit 
     }
 
     public ngOnInit() {
-        this.setup();
+        this.setup(new DatetimePickerMonth<T>(this.range.start.date));
     }
 
     public ngAfterViewInit() {
         this.nav.change$.subscribe(month => {
-            this.setup(new Date(month.year, month.month, 1));
+            if (isWithinInterval(month.date, { start: this.range.start.date, end: this.range.end.date })) {
+                this.setup(month);
+            }
         });
     }
 
-    public setup(current?: Date): void {
+    public setup(current?: DatetimePickerMonth<T>): boolean {
+        if (!current) {
+            current = new DatetimePickerMonth<T>(this.range.start.date.getMonth(), this.range.start.date.getFullYear());
+        }
         const days = DatetimePickerUtilities.getDaysBetween(this.range.start.date, this.range.end.date);
-        this.current = current || this.range.start.selected || days[0].date;
-
-        this.currentMonth = {
-            name: DatetimePickerUtilities.MONTHS[this.current.getMonth()].name,
-            month: this.current.getMonth(),
-            year: this.current.getFullYear()
-        };
+        this.current = current;
 
         //
         // Spread out days that are in each month(s) within the range.start and range.end values.
         //
-        const selected = DatetimePickerUtilities.reduce(this.currentMonth, this.range, this.range.start.selected, this.range.end.selected);
-        const padColumnsBefore = 6 - selected[0].date.getDay();
+        const selected = DatetimePickerUtilities.reduce(this.current, this.range, this.range.start.selected, this.range.end.selected);
+        if (selected.length === 0) {
+            return false;
+        }
+        const padColumnsBefore = selected[0].date.getDay();
         const padColumnsAfter = 6 - selected[selected.length - 1].date.getDay();
-
         this.calendar = [
             ...Array.from({ length: padColumnsBefore }, (_, i) => new DatetimePickerDay<T>(new Date(selected[0].date.getFullYear(), selected[0].date.getMonth(), selected[0].date.getDate() - (padColumnsBefore - i)))),
             ...selected,
             ...Array.from({ length: padColumnsAfter }, (_, i) => new DatetimePickerDay<T>(new Date(selected[selected.length - 1].date.getFullYear(), selected[selected.length - 1].date.getMonth(), selected[selected.length - 1].date.getDate() + (i + 1))))
         ];
+        return true;
     }
 
     public onClick(day: DatetimePickerDay<T>) {
