@@ -184,10 +184,13 @@ export class DatetimeCalendarMonthComponent<T> implements OnInit, AfterViewInit 
     }
 
     public timeShow(mode: 'start' | 'end'): void {
+        console.log(this.formGroup.controls[mode]);
         setTimeout(() => {
             const instance = this.dynamicComponentFactoryService.createInContainer('datetime-picker-time', this.timeWrapper, DatetimePickerTimeComponent);
             instance.componentRef.instance.config = this.config;
             instance.componentRef.instance.mode = mode;
+            // @ts-ignore
+            instance.componentRef.instance.formGroup = this.formGroup.controls[mode]['controls']['time'] as FormGroup;
         }, 100);
     }
 }

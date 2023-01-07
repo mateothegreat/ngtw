@@ -12,6 +12,7 @@
         "test": "ng test",
         "release:breadcrumbs": "cd projects/breadcrumbs && npm version patch && cd ../../ && ng build breadcrumbs && cd dist/breadcrumbs && npm publish --access=public",
         "release:dropdown": "cd projects/dropdown && npm version patch && cd ../../ && ng build dropdown && cd dist/dropdown && npm publish --access=public",
+        "release:datetime-picker": "cd projects/datetime-picker && npm version patch && cd ../../ && ng build datetime-picker && cd dist/datetime-picker && npm publish --access=public",
         "release:dynamic-component-factory": "cd projects/dynamic-component-factory && npm version patch && cd ../../ && ng build dynamic-component-factory && cd dist/dynamic-component-factory && npm publish --access=public",
         "release:range": "cd projects/range && npm version patch && cd ../../ && ng build range && cd dist/range && npm publish --access=public",
         "release:stepper": "cd projects/stepper && npm version patch && cd ../../ && ng build stepper && cd dist/stepper && npm publish --access=public",

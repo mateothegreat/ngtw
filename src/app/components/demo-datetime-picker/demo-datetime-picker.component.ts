@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { DatetimePickerResult } from '../../../../projects/datetime-picker/src/datetime-picker-result';
 import { DatetimePicker } from '../../../../projects/datetime-picker/src/lib/datetime-picker';
 import { DatetimePickerDayFormat } from '../../../../projects/datetime-picker/src/lib/datetime-picker-day-format';
 import { DatetimePickerMode } from '../../../../projects/datetime-picker/src/lib/datetime-picker-mode';
 import { DatetimePickerRange } from '../../../../projects/datetime-picker/src/lib/datetime-picker-range';
+import { DatetimePickerResult } from '../../../../projects/datetime-picker/src/lib/datetime-picker-result';
 import { DatetimePickerTheme } from '../../../../projects/datetime-picker/src/lib/datetime-picker-theme';
 
 @Component({

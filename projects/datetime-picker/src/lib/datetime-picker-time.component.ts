@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { DropdownComponent } from '@ngtw/dropdown';
 import { DynamicComponentFactoryService } from '@ngtw/dynamic-component-factory';
 import { ButtonGroupComponent } from 'button-group';
-import { DropdownComponent } from 'projects/dropdown/src/public-api';
 
 import { DatetimePicker } from './datetime-picker';
 import { DatetimePickerRange } from './datetime-picker-range';

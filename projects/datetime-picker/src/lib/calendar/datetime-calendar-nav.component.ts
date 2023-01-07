@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 
 import { Component, Input, OnInit } from '@angular/core';
+import { DropdownComponent, DropdownGroup } from '@ngtw/dropdown';
 import { addMonths, subMonths } from 'date-fns';
-import { DropdownComponent, DropdownGroup } from 'projects/dropdown/src/public-api';
 import { Subject } from 'rxjs';
 
 import { DatetimePicker } from '../datetime-picker';
@@ -18,7 +18,7 @@ import { DatetimePickerUtilities } from '../datetime-picker-utilities';
     ],
     selector: 'ngtw-datetime-calendar-nav',
     template: `
-        <div class="flex justify-evenly flex-1 h-12 items-center">
+        <div class="flex justify-evenly flex-1 h-10 bg-gray-50 items-center">
             <div class="flex flex-1 border border-2 border-gray-100 rounded h-full">
                 <button *ngIf="canPrevious()" (click)="previous()" class="fill-gray-300 cursor-pointer hover:fill-blue-400 transform active:scale-75 disabled:active:scale-100 transition-transform">
                     <svg class="w-8 h-8 rotate-90" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
