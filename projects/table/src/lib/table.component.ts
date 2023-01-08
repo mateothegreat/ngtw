@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChildren, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChildren, ViewContainerRef } from '@angular/core';
 import { Table } from './table';
 import { TableColumnComponent } from './table-column.component';
 import { TableEventClick } from './table-event-click';
@@ -14,27 +14,30 @@ import { TableEventClick } from './table-event-click';
     template: `
         <table [ngClass]="table.classes" class="w-full">
             <thead [ngClass]="table.theme?.header">
-            <tr tabindex="0" class="focus:outline-none h-16 w-full text-sm leading-none text-gray-800">
-                <th *ngFor="let column of table.columns" [ngClass]="column.header.classes + ' ' + column.classes" class="font-medium text-left">
-                    {{ column.header.text }}
+            <tr tabindex="0" class="focus:outline-none h-16 w-full leading-none text-gray-800">
+                <th *ngFor="let column of table.columns" [ngClass]="column.header?.classes + ' ' + column.classes" class="font-medium text-left">
+                    {{ column.header?.text }}
                 </th>
             </tr>
             </thead>
             <tbody class="w-full">
-            <tr *ngFor="let row of (table.data$ | async); let i = index" [ngClass]="table.theme.row" [tabindex]="i" class="focus:outline-none text-sm leading-none text-gray-800 hover:bg-gray-100 border-b border-t border-gray-100">
+            <tr *ngFor="let row of (table.data$ | async); let i = index" [ngClass]="table.theme.row" [tabindex]="i" class="focus:outline-none border-b border-t">
                 <td *ngFor="let column of table.columns; let c = index" (click)="clicked.emit({ row: i, column, data: row[column.property] })" [ngClass]="column.classes">
-                    <div *ngIf="!column.component"
-                         class="flex items-center">
+                    <ng-container *ngTemplateOutlet="column.component ? component : text" class="flex items-center"></ng-container>
+
+                    <ng-template #text class="flex items-center">
                         {{ column.fn ? column.fn(row[column.property]) : row[column.property] }}
-                    </div>
-                    <ngtw-table-column *ngIf="column.component" [column]="column" [data]="column.property ? row[column.property] : row"></ngtw-table-column>
+                    </ng-template>
+                    <ng-template #component>
+                        <ngtw-table-column *ngIf="column.component" [column]="column" [data]="column.property ? row[column.property] : row"></ngtw-table-column>
+                    </ng-template>
                 </td>
             </tr>
             </tbody>
         </table>
     `
 })
-export class TableComponent<T> implements OnInit, AfterViewInit {
+export class TableComponent<T> implements OnInit {
     @ViewChildren('customColumn', { read: ViewContainerRef }) private customColumns: ViewContainerRef[];
 
     @Input() public table: Table<T>;
@@ -47,14 +50,6 @@ export class TableComponent<T> implements OnInit, AfterViewInit {
 
         this.table.data$.subscribe(data => {
             this.data = data;
-        });
-    }
-
-    public ngAfterViewInit() {
-        console.log(this.customColumns);
-        this.customColumns.forEach((customColumn, i) => {
-            console.log(i, customColumn);
-            // customColumn.createComponent(this.table.columns[i].component);
         });
     }
 }

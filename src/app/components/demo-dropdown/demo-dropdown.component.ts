@@ -9,9 +9,9 @@ import { DropdownItem } from '../../../../projects/dropdown/src/lib/dropdown-ite
     styleUrls: [ './demo-dropdown.component.scss' ]
 })
 export class DemoDropdownComponent {
-    @ViewChild('dropdownManual') private dropdownManual: DropdownComponent;
+    @ViewChild('dropdownManual') private dropdownManual: DropdownComponent<any>;
 
-    public menu: Array<DropdownGroup> = [
+    public menu: Array<DropdownGroup<any>> = [
         {
             label: 'Group A',
             items: [
@@ -25,7 +25,7 @@ export class DemoDropdownComponent {
                 {
                     label: 'Item 2 and on..',
                     extra: [ 'text-red-500', 'font-bold' ],
-                    click: (item: DropdownItem) => {
+                    click: (item: DropdownItem<any>) => {
                         console.log(item);
                     }
                 }

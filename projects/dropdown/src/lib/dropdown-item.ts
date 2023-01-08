@@ -1,9 +1,9 @@
 import { NavigationExtras } from '@angular/router';
 
-export interface DropdownItem {
+export interface DropdownItem<T> {
     label: string;
     route?: { commands: any[], extras?: NavigationExtras };
     click?: Function;
-    extra?: Array<string>;
+    extra?: T;
     disabled?: boolean;
 }

@@ -8,9 +8,9 @@ import { Popup } from './popup';
     selector: 'ngtw-popup',
     imports: [ CommonModule ],
     template: `
-        <div [class.bg-gray-700]="popup.backdrop" class="bg-opacity-80 absolute top-0 right-0 bottom-0 left-0">
+        <div [class.bg-gray-700]="popup.backdrop" class="blur-md absolute top-0 right-0 bottom-0 left-0 shadow-xl rounded-lg bg-gray-50">
             <div class="flex justify-center items-center h-full">
-                <div [ngClass]="popup.classes" class="flex flex-col gap-y-5 shadow-xl rounded-lg bg-gray-50">
+                <div [ngClass]="popup.classes" class="flex flex-col gap-y-5">
                     <div class="flex justify-between p-3 gap-x-10 items-start">
                         <div class="">
                             <p class="text-xl font-medium text-slate-800">{{ popup.title }}</p>

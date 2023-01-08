@@ -32,9 +32,6 @@ export class DemoTableComponent {
             },
             {
                 property: 'custom',
-                header: {
-                    text: 'Custom Component'
-                },
                 component: CustomTableRowAComponent
             }
         ],

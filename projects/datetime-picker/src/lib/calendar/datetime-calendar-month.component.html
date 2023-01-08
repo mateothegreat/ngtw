@@ -1,0 +1,26 @@
+<ngtw-datetime-calendar-nav #nav
+                            [config]="config"
+                            [selected]="current"
+                            [range]="range"></ngtw-datetime-calendar-nav>
+<div class="p-2">
+    <div class="grid grid-cols-7 text-center text-xs leading-6 text-gray-500 border-b pb-2">
+        <div *ngFor="let day of days">
+            {{ day.short[0] }}
+        </div>
+    </div>
+    <div class="mt-2 grid grid-cols-7 text-sm">
+        <div *ngFor="let day of calendar; let i = index"
+             [class.range-start]="isSelected(day) && day.date.getDate() === start?.date.getDate()"
+             [class.range-between]="isSelected(day) && day.date.getDate()"
+             [class.range-end]="isSelected(day) && day.date.getDate() === end?.date.getDate()"
+             (click)="onClick(day)"
+             class="my-2  hover:bg-green-200 border-transparent border-b-4 text-green-600">
+            <button [class.text-gray-400]="!isInRange(day) || (!isSelected(day) && (day.date.getTime() < range.start.date.getTime() || day.date.getTime() > range.end.date.getTime()))"
+                    class="mx-auto flex h-8 w-8 px-2 items-center justify-center rounded">
+                <time datetime="2022-01-21">
+                    {{ day.date.getDate() }}
+                </time>
+            </button>
+        </div>
+    </div>
+</div>
