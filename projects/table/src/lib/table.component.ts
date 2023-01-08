@@ -14,8 +14,8 @@ import { TableEventClick } from './table-event-click';
     template: `
         <table [ngClass]="table.classes" class="w-full">
             <thead [ngClass]="table.theme?.header">
-            <tr tabindex="0" class="focus:outline-none h-16 w-full leading-none text-gray-800">
-                <th *ngFor="let column of table.columns" [ngClass]="column.header?.classes + ' ' + column.classes" class="font-medium text-left">
+            <tr tabindex="0" class="focus:outline-none h-16 w-full leading-none">
+                <th *ngFor="let column of table.columns" [ngClass]="column.header?.classes + ' ' + column.classes">
                     {{ column.header?.text }}
                 </th>
             </tr>
