@@ -114,8 +114,11 @@ export class AppComponent {
         this.popupService.open({
             title: 'Example popup!',
             subtitle: 'This is an example popup!',
-            classes: 'bg-slate-100',
-            content: 'This is an example popup!This is an example popup!This is an example popup!This is an example popup!This is an example popup!This is an example popup!'
+            classes: 'bg-gray-50',
+            backdrop: true,
+            component: AComponent
+
+            // content: 'This is an example popup!This is an example popup!This is an example popup!This is an example popup!This is an example popup!This is an example popup!'
         });
     }
 
@@ -123,6 +126,7 @@ export class AppComponent {
         this.popupService.open({
             title: 'Example popup!',
             subtitle: 'This is an example popup!',
+            classes: 'bg-gray-50',
             component: AComponent,
             buttons: [
                 {

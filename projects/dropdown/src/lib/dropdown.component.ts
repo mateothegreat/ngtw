@@ -35,7 +35,6 @@ export class DropdownComponent<T> implements AfterViewInit {
 
     @HostListener('document:click', [ '$event' ])
     private onDocumentClick($event: MouseEvent) {
-        console.log($event);
         if (this.buttonRef) {
             if (!this.show && $event.target === this.buttonRef.nativeElement) {
                 this.open();
@@ -66,7 +65,6 @@ export class DropdownComponent<T> implements AfterViewInit {
 
     public open(): void {
         this.show = !this.show;
-        console.log(this.show);
         if (this.show) {
             if (this.target) {
                 this.instance = createPopper(this.target, this.popoverRef.nativeElement, {

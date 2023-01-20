@@ -11,7 +11,7 @@ export class Popup<T> {
     public close?: boolean;
     public closeable?: boolean = true;
     public escapable?: boolean = true;
-    public backdrop?: boolean = true;
+    public backdrop?: boolean;
     public blurable?: boolean = true;
     public buttons?: PopupButton[] = [];
 

@@ -7,7 +7,6 @@ import { PopupComponent } from './popup.component';
     providedIn: 'root'
 })
 export class PopupService {
-
     public instances: Popup<any>[] = [];
 
     public constructor(private readonly dynamicComponentFactoryService: DynamicComponentFactoryService) {
@@ -21,9 +20,6 @@ export class PopupService {
     }
 
     public close(title: string): void {
-
-        const instance = this.instances.find((instance) => instance.title === title);
-
         this.dynamicComponentFactoryService.destroy(title);
 
         this.instances = this.instances.filter((popup) => {
