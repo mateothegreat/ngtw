@@ -13,6 +13,7 @@ import { ButtonGroupComponent } from '../../projects/button-group/src/lib/button
 import { DatetimePickerComponent } from '../../projects/datetime-picker/src/lib/datetime-picker.component';
 import { DividerComponent } from '../../projects/divider/src/lib/divider.component';
 import { DropdownComponent } from '../../projects/dropdown/src/lib/dropdown.component';
+import { FormControlComponent } from '../../projects/form-control/src/lib/form-control.component';
 
 import { HelperComponent } from '../../projects/helper/src/lib/helper.component';
 import { InputComponent } from '../../projects/input/src/lib/input.component';
@@ -32,6 +33,7 @@ import { DemoBreadcrumbsComponent } from './components/demo-breadcrumbs/demo-bre
 import { DemoButtonGroupComponent } from './components/demo-button-group/demo-button-group.component';
 import { DemoDatetimePickerComponent } from './components/demo-datetime-picker/demo-datetime-picker.component';
 import { DemoDropdownComponent } from './components/demo-dropdown/demo-dropdown.component';
+import { DemoFormControlComponent } from './components/demo-form-control/demo-form-control.component';
 import { DemoPanelComponent } from './components/demo-panel/demo-panel.component';
 import { CustomTableRowAComponent } from './components/demo-table/custom-table-row-a/custom-table-row-a.component';
 import { DemoTableComponent } from './components/demo-table/demo-table.component';
@@ -58,7 +60,8 @@ SwiperCore.use([ Pagination, Navigation ]);
         DemoBreadcrumbsComponent,
         DemoTabsComponent,
         DemoPanelComponent,
-        DemoDatetimePickerComponent
+        DemoDatetimePickerComponent,
+        DemoFormControlComponent
     ],
     imports: [
         BrowserModule,
@@ -94,6 +97,10 @@ SwiperCore.use([ Pagination, Navigation ]);
                 component: DemoDropdownComponent
             },
             {
+                path: 'demo/form-control',
+                component: DemoFormControlComponent
+            },
+            {
                 path: 'demo/panel',
                 component: DemoPanelComponent
             },
@@ -116,7 +123,8 @@ SwiperCore.use([ Pagination, Navigation ]);
         ]),
         ButtonGroupComponent,
         BreadcrumbsComponent,
-        TabsComponent
+        TabsComponent,
+        FormControlComponent
     ],
     providers: [],
     bootstrap: [ AppComponent ]

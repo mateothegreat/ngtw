@@ -114,7 +114,7 @@ export class AppComponent {
         this.popupService.open({
             title: 'Example popup!',
             subtitle: 'This is an example popup!',
-            classes: 'bg-gray-50',
+            classes: 'bg-gray-500',
             backdrop: true,
             component: AComponent
 
@@ -126,7 +126,7 @@ export class AppComponent {
         this.popupService.open({
             title: 'Example popup!',
             subtitle: 'This is an example popup!',
-            classes: 'bg-gray-50',
+            classes: 'bg-gray-500',
             component: AComponent,
             buttons: [
                 {

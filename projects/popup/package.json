@@ -1,6 +1,6 @@
 {
     "name": "@ngtw/popup",
-    "version": "0.0.5",
+    "version": "0.0.14",
     "peerDependencies": {
         "@angular/common": "^15.0.0",
         "@angular/core": "^15.0.0",

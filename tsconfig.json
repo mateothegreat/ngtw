@@ -52,6 +52,9 @@
             "feedback-form": [
                 "dist/feedback-form"
             ],
+            "form-control": [
+              "dist/form-control"
+            ],
             "helper": [
                 "dist/helper"
             ],
